@@ -1,0 +1,17 @@
+ {
+    "name": "jeff and lizzie/ bark parks",
+    "authors": [
+                {
+                    "name": "Jeff Church",
+                    "email": "jchurch4@mail.greenriver.edu"
+                },
+                {
+                    "name": "Elizabeth Benner",
+                    "email": "ebenner@mail.greenriver.edu"
+                }
+                ],
+    "require": {
+    "bcosca/fatfree-core": "dev-master"
+    }
+    
+    }
