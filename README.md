@@ -3,6 +3,7 @@ Team final project Dog Park Finder
 
 CREATE TABLE parks (
   id INT(3) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  park_name VARCHAR(255),
   location VARCHAR(255),
   num_ratings INT(3),
   sum_ratings INT(3),
