@@ -1,0 +1,28 @@
+[30-May-2017 22:06:40 America/Chicago] PHP Warning:  include(/home/ebenner/public_html/328/bark-parks/vendor/composer/../bcosca/fatfree-core/base.php): failed to open stream: No such file or directory in /home/ebenner/public_html/328/bark-parks/vendor/composer/ClassLoader.php on line 444
+[30-May-2017 22:06:40 America/Chicago] PHP Warning:  include(/home/ebenner/public_html/328/bark-parks/vendor/composer/../bcosca/fatfree-core/base.php): failed to open stream: No such file or directory in /home/ebenner/public_html/328/bark-parks/vendor/composer/ClassLoader.php on line 444
+[30-May-2017 22:06:40 America/Chicago] PHP Warning:  include(): Failed opening '/home/ebenner/public_html/328/bark-parks/vendor/composer/../bcosca/fatfree-core/base.php' for inclusion (include_path='.:/opt/php70/lib/php') in /home/ebenner/public_html/328/bark-parks/vendor/composer/ClassLoader.php on line 444
+[30-May-2017 22:06:40 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'Base' not found in /home/ebenner/public_html/328/bark-parks/index.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/ebenner/public_html/328/bark-parks/index.php on line 6
+[30-May-2017 22:09:24 America/Chicago] PHP Warning:  include(/home/ebenner/public_html/328/bark-parks/vendor/composer/../bcosca/fatfree-core/base.php): failed to open stream: No such file or directory in /home/ebenner/public_html/328/bark-parks/vendor/composer/ClassLoader.php on line 444
+[30-May-2017 22:09:24 America/Chicago] PHP Warning:  include(/home/ebenner/public_html/328/bark-parks/vendor/composer/../bcosca/fatfree-core/base.php): failed to open stream: No such file or directory in /home/ebenner/public_html/328/bark-parks/vendor/composer/ClassLoader.php on line 444
+[30-May-2017 22:09:24 America/Chicago] PHP Warning:  include(): Failed opening '/home/ebenner/public_html/328/bark-parks/vendor/composer/../bcosca/fatfree-core/base.php' for inclusion (include_path='.:/opt/php70/lib/php') in /home/ebenner/public_html/328/bark-parks/vendor/composer/ClassLoader.php on line 444
+[30-May-2017 22:09:24 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'Base' not found in /home/ebenner/public_html/328/bark-parks/index.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/ebenner/public_html/328/bark-parks/index.php on line 6
+[30-May-2017 22:19:16 America/Chicago] PHP Warning:  include(/home/ebenner/public_html/328/bark-parks/vendor/composer/../bcosca/fatfree-core/base.php): failed to open stream: No such file or directory in /home/ebenner/public_html/328/bark-parks/vendor/composer/ClassLoader.php on line 444
+[30-May-2017 22:19:16 America/Chicago] PHP Warning:  include(/home/ebenner/public_html/328/bark-parks/vendor/composer/../bcosca/fatfree-core/base.php): failed to open stream: No such file or directory in /home/ebenner/public_html/328/bark-parks/vendor/composer/ClassLoader.php on line 444
+[30-May-2017 22:19:16 America/Chicago] PHP Warning:  include(): Failed opening '/home/ebenner/public_html/328/bark-parks/vendor/composer/../bcosca/fatfree-core/base.php' for inclusion (include_path='.:/opt/php70/lib/php') in /home/ebenner/public_html/328/bark-parks/vendor/composer/ClassLoader.php on line 444
+[30-May-2017 22:19:16 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'Base' not found in /home/ebenner/public_html/328/bark-parks/index.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/ebenner/public_html/328/bark-parks/index.php on line 6
+[30-May-2017 22:19:18 America/Chicago] PHP Warning:  include(/home/ebenner/public_html/328/bark-parks/vendor/composer/../bcosca/fatfree-core/base.php): failed to open stream: No such file or directory in /home/ebenner/public_html/328/bark-parks/vendor/composer/ClassLoader.php on line 444
+[30-May-2017 22:19:18 America/Chicago] PHP Warning:  include(/home/ebenner/public_html/328/bark-parks/vendor/composer/../bcosca/fatfree-core/base.php): failed to open stream: No such file or directory in /home/ebenner/public_html/328/bark-parks/vendor/composer/ClassLoader.php on line 444
+[30-May-2017 22:19:18 America/Chicago] PHP Warning:  include(): Failed opening '/home/ebenner/public_html/328/bark-parks/vendor/composer/../bcosca/fatfree-core/base.php' for inclusion (include_path='.:/opt/php70/lib/php') in /home/ebenner/public_html/328/bark-parks/vendor/composer/ClassLoader.php on line 444
+[30-May-2017 22:19:18 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'Base' not found in /home/ebenner/public_html/328/bark-parks/index.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/ebenner/public_html/328/bark-parks/index.php on line 6
