@@ -41,6 +41,7 @@ class ComposerStaticInitd508342ee409f6d08b4c2370f4f77e02
         'Template' => __DIR__ . '/..' . '/bcosca/fatfree-core/template.php',
         'Test' => __DIR__ . '/..' . '/bcosca/fatfree-core/test.php',
         'UTF' => __DIR__ . '/..' . '/bcosca/fatfree-core/utf.php',
+        'User' => __DIR__ . '/../..' . '/classes/user.php',
         'View' => __DIR__ . '/..' . '/bcosca/fatfree-core/base.php',
         'Web' => __DIR__ . '/..' . '/bcosca/fatfree-core/web.php',
         'Web\\Geo' => __DIR__ . '/..' . '/bcosca/fatfree-core/web/geo.php',
