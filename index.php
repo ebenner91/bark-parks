@@ -11,7 +11,11 @@
         echo Template::instance()->render('pages/home.html');
     });
       
-      
+        $f3->route('GET /login', function($f3) {
+        $view = new View;
+        echo Template::instance()->render('pages/login.html');
+    });
+        
         //Run fat free    
     $f3->run();
     

@@ -50,7 +50,7 @@
      </div>
        <table class="table table-responsive">
             <thead>
-                <tr>
+                <tr>  
                     <th>Park</th>
                     <th>Location</th>
                     <th>Rating</th>
