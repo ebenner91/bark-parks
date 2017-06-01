@@ -24,7 +24,7 @@
         protected $description;
         
         /**
-         *Contructor to create the blog post and save the details
+         *Contructor to create the park object and save the details
          *
          *@param String $name the name of the park
          *@param String $location the location of the park
