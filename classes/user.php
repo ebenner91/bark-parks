@@ -31,7 +31,7 @@ class User
     function __construct($username, $password)
     {
         $this->username = $username;
-        $this->password = password_hash($password);
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
     
     //Setters
@@ -52,7 +52,7 @@ class User
      */
     function setPassword($password)
     {
-        $this->password = password_hash($password);
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
     
     //Getters

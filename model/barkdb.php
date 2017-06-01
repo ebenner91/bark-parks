@@ -44,7 +44,7 @@ class BlogsDB
     
     //Methods to access user information
     /**
-     *Creates a user in the datatbase using a User object
+     *Creates a user in the database using a User object
      *
      *@access public
      *
@@ -54,7 +54,7 @@ class BlogsDB
      */
     function addUser($user)
     {
-        //Create the insert statement, setting the premium column to 1 to indicate a premium member
+        //Create the insert statement
         $insert = 'INSERT INTO users (username, password)
         VALUES (:username, :password)';
         
@@ -107,7 +107,7 @@ class BlogsDB
                     
         //prepare the statement and bind the id
         $statement = $this->_pdo->prepare($select);
-        $statement->bindValue(':username', $username, PDO::PARAM_INT);
+        $statement->bindValue(':username', $username, PDO::PARAM_STR);
         $statement->execute();
         
         $result = $statement->fetch(PDO::FETCH_ASSOC);
@@ -115,6 +115,100 @@ class BlogsDB
         return password_verify($password, $result['password']);
    }
    
+   /**
+    *Updates a user's password
+    *
+    *@param String $password the new password to be entered
+    *@param int $id the id of the user to be updates
+    */
+   function changePassword($password, $id)
+   {
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        
+        $update = 'UPDATE users
+        SET password = :password
+        WHERE id = :id';
+        
+        $statement = $this->_pdo->prepare($update);
+        $statement->bindValue(':password', $password, PDO::PARAM_STR);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        
+        $statement->execute();
+        
+   }
+   
    //Methods to access park information
    
+   /**
+     *Creates a park in the database using a Park object
+     *
+     *@access public
+     *
+     *@param Object $park a Park object containing the information about the new park
+     *
+     *@return the database id of the new park
+     */
+    function addPark($park)
+    {
+        //Create the insert statement
+        $insert = 'INSERT INTO parks (park_name, location, features, description)
+        VALUES (:park_name, :location, :features, :description)';
+        
+        $statement = $this->_pdo->prepare($insert);
+
+        $statement->bindValue(':park_name', $park->getName(), PDO::PARAM_STR);
+        $statement->bindValue(':location', $park->getLocation(), PDO::PARAM_STR);
+        $statement->bindValue(':features', $park->getFeatures(), PDO::PARAM_STR);
+        $statement->bindValue(':description', $park->getDescription(), PDO::PARAM_STR);
+        
+        $statement->execute();
+        
+        //Return ID of inserted row
+        return $this->_pdo->lastInsertId();
+    }
+    
+    /**
+    * Returns a park that matches the given id
+    *
+    * @access public
+    * @param int $id the id of the park
+    *
+    * @return an associative array of park information
+    */
+   function getParkById($id)
+   {
+        //Create the select statement
+       $select = 'SELECT id, park_name, location, num_ratings, sum_ratings, features, description
+                    FROM parks WHERE id=:id';
+       
+       //prepare the statement and bind the id
+       $statement = $this->_pdo->prepare($select);
+       $statement->bindValue(':id', $id, PDO::PARAM_INT);
+       $statement->execute();
+       
+       //return the array holding the info pulled from the database 
+       return $statement->fetch(PDO::FETCH_ASSOC);
+   }
    
+   /**
+    *Updates rating stats on a park
+    *
+    *@access public
+    *@param int $id the id of the park
+    *@param $newRating the new rating to add to the data
+    */
+   function updateRating($id, $newRating)
+   {
+        //Create the update statement
+        $update = 'UPDATE parks
+        SET sum_rating = sum_rating + :new_rating, num_rating = num_rating + 1
+        WHERE id = :id';
+        
+        $statement = $this->_pdo->prepare($update);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        $statement->bindValue(':new_rating', $newRating, PDO::PARAM_INT);
+        
+        $statement->execute();
+        
+        
+   }
