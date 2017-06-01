@@ -186,8 +186,36 @@ class BlogsDB
         $statement->bindValue(':id', $id, PDO::PARAM_INT);
         $statement->execute();
         
+        
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        $result['rating'] = intdiv($result['sum_ratings'], $result['num_ratings']);
+        
         //return the array holding the info pulled from the database 
-        return $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+   }
+   
+   /**
+    *Returns an associative array containing all of the parks in the database
+    *
+    *@return an associative array of all of the parks with their information
+    */
+   function getAllParks()
+   {
+        $select = 'SELECT id, park_name, location, num_ratings, sum_ratings, features, description
+                    FROM parks ORDER BY park_name';
+                    
+       $statement = $this->_pdo->prepare($select);
+        
+       $statement->execute();
+        
+       $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+       
+       foreach($results as $row) {
+            $row['rating'] = intdiv($row['sum_ratings'], $row['num_ratings']);
+       }
+       
+       return $results;
    }
    
    /**
@@ -212,6 +240,7 @@ class BlogsDB
         
         
    }
+   
    
    /**
     *Adds a feature to the features list by pulling the list from the database,
@@ -253,8 +282,32 @@ class BlogsDB
         
         $statement = $this->_pdo->prepare($update);
         $statement->bindValue(':id', $id, PDO::PARAM_INT);
-        $statement->bindValue(':features', $featuresList, PDO::PARAM_INT);
+        $statement->bindValue(':features', $featuresList, PDO::PARAM_STR);
         
         $statement->execute();
         
    }
+   
+   /**
+    *Updates the park description
+    *
+    *@param int $id the id of the park to be updated
+    *@param String $description the new description for the park
+    */
+   function updateDescription($id, $description)
+   {
+        //Create the update statement
+        $update = 'UPDATE parks
+        SET description = :description
+        WHERE id = :id';
+        
+        $statement = $this->_pdo->prepare($update);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        $statement->bindValue(':description', $description, PDO::PARAM_STR);
+        
+        $statement->execute();
+   }
+   
+   
+   
+   
