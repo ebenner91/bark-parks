@@ -21,14 +21,14 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
              </button>
-              <a class="navbar-brand" href="#">BarkParks</a>
+              <a class="navbar-brand" href="./">BarkParks</a>
           </div>
          <!-- Collect the nav links, forms, and other content for toggling -->
          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Create an Account</a></li>
+                <li class="active"><a href="./">Home <span class="sr-only">(current)</span></a></li>
+                <li><a href="./login">Login</a></li>
+                <li><a href="./newaccount">Create an Account</a></li>
               </ul>
         </div><!-- /.container-fluid -->
         </nav>

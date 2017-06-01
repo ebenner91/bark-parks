@@ -21,14 +21,14 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
              </button>
-              <a class="navbar-brand" href="#">BarkParks</a>
+              <a class="navbar-brand" href="./">BarkParks</a>
           </div>
          <!-- Collect the nav links, forms, and other content for toggling -->
          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li><a href="#">Home</a></li>
-                <li class="active"><a href="#">Login <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Create an Account</a></li>
+                <li><a href="./">Home</a></li>
+                <li class="active"><a href="./login">Login <span class="sr-only">(current)</span></a></li>
+                <li><a href="./newaccount">Create an Account</a></li>
               </ul>
         </div><!-- /.container-fluid -->
         </nav>
@@ -38,7 +38,7 @@
                 <div class="center">
                     <h4>Welcome!</h4>
                     <hr>
-                     <form class="form-horizontal">
+                     <form class="form-horizontal" method="post" action="./login">
                        <div class="form-group">
                          <label class="control-label col-sm-2" for="email">Email:</label>
                          <div class="col-sm-10">
@@ -46,7 +46,7 @@
                          </div>
                        </div>
                        <div class="form-group">
-                         <label class="control-label col-sm-2" for="pwd">Password:</label>
+                         <label class="control-label col-sm-2" for="password">Password:</label>
                          <div class="col-sm-10"> 
                            <input type="password" class="form-control" id="password" placeholder="Enter password">
                          </div>
