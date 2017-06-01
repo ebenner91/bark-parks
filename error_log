@@ -119,3 +119,30 @@ Stack trace:
 [31-May-2017 22:08:08 America/Chicago] HTTP 404 (GET /newaccount%22)
 [31-May-2017 22:08:08 America/Chicago] [328/bark-parks/vendor/bcosca/fatfree-core/base.php:1645] Base->error()
 [31-May-2017 22:08:08 America/Chicago] [328/bark-parks/index.php:27] Base->run()
+[31-May-2017 22:15:30 America/Chicago] PHP Parse error:  syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';' in /home/jchurch/public_html/328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php on line 39
+[31-May-2017 22:15:30 America/Chicago] Fatal error: syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';'
+[31-May-2017 22:15:30 America/Chicago] [328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php:39] 
+[31-May-2017 22:15:52 America/Chicago] PHP Parse error:  syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';' in /home/jchurch/public_html/328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php on line 39
+[31-May-2017 22:15:52 America/Chicago] Fatal error: syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';'
+[31-May-2017 22:15:52 America/Chicago] [328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php:39] 
+[31-May-2017 22:15:53 America/Chicago] PHP Parse error:  syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';' in /home/jchurch/public_html/328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php on line 39
+[31-May-2017 22:15:53 America/Chicago] Fatal error: syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';'
+[31-May-2017 22:15:53 America/Chicago] [328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php:39] 
+[31-May-2017 22:15:53 America/Chicago] PHP Parse error:  syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';' in /home/jchurch/public_html/328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php on line 39
+[31-May-2017 22:15:53 America/Chicago] Fatal error: syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';'
+[31-May-2017 22:15:53 America/Chicago] [328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php:39] 
+[31-May-2017 22:15:54 America/Chicago] PHP Parse error:  syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';' in /home/jchurch/public_html/328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php on line 39
+[31-May-2017 22:15:54 America/Chicago] Fatal error: syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';'
+[31-May-2017 22:15:54 America/Chicago] [328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php:39] 
+[31-May-2017 22:15:55 America/Chicago] PHP Parse error:  syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';' in /home/jchurch/public_html/328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php on line 39
+[31-May-2017 22:15:55 America/Chicago] Fatal error: syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';'
+[31-May-2017 22:15:55 America/Chicago] [328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php:39] 
+[31-May-2017 22:15:56 America/Chicago] PHP Parse error:  syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';' in /home/jchurch/public_html/328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php on line 39
+[31-May-2017 22:15:56 America/Chicago] Fatal error: syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';'
+[31-May-2017 22:15:56 America/Chicago] [328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php:39] 
+[31-May-2017 22:15:56 America/Chicago] PHP Parse error:  syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';' in /home/jchurch/public_html/328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php on line 39
+[31-May-2017 22:15:56 America/Chicago] Fatal error: syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';'
+[31-May-2017 22:15:56 America/Chicago] [328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php:39] 
+[31-May-2017 22:16:28 America/Chicago] PHP Parse error:  syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';' in /home/jchurch/public_html/328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php on line 39
+[31-May-2017 22:16:28 America/Chicago] Fatal error: syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';'
+[31-May-2017 22:16:28 America/Chicago] [328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php:39] 

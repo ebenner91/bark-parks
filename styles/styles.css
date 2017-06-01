@@ -19,3 +19,19 @@ body, html{
 .text-small{
     font-size: 12pt;
 }
+
+.features{
+    height: 25%;
+}
+
+.about-park{
+    height: 35%;
+}
+
+.park-name{
+    height: 20%;
+}
+
+.container{
+    height: 100%;
+}
