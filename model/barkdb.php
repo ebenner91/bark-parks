@@ -178,16 +178,16 @@ class BlogsDB
    function getParkById($id)
    {
         //Create the select statement
-       $select = 'SELECT id, park_name, location, num_ratings, sum_ratings, features, description
+        $select = 'SELECT id, park_name, location, num_ratings, sum_ratings, features, description
                     FROM parks WHERE id=:id';
        
-       //prepare the statement and bind the id
-       $statement = $this->_pdo->prepare($select);
-       $statement->bindValue(':id', $id, PDO::PARAM_INT);
-       $statement->execute();
-       
-       //return the array holding the info pulled from the database 
-       return $statement->fetch(PDO::FETCH_ASSOC);
+        //prepare the statement and bind the id
+        $statement = $this->_pdo->prepare($select);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+        
+        //return the array holding the info pulled from the database 
+        return $statement->fetch(PDO::FETCH_ASSOC);
    }
    
    /**
@@ -210,5 +210,51 @@ class BlogsDB
         
         $statement->execute();
         
+        
+   }
+   
+   /**
+    *Adds a feature to the features list by pulling the list from the database,
+    *adding the new feature to the list, then updating the list in the database with the
+    *new list
+    *
+    *@param int $id the id of the park to be updated
+    *@param String $newFeature the new feature to be added to the list
+    */
+   function addFeature($id, $newFeature)
+   {
+        //Select the current features list from the database
+        $select = 'SELECT features
+                    FROM parks WHERE id=:id';
+       
+        //prepare the statement and bind the id
+        $statement = $this->_pdo->prepare($select);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+        
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        //Save the features into a String
+        $featuresList = $result['features'];
+        
+        //Explode the list into an array
+        $featuresArray = explode(', ', $featuresList);
+        
+        //Push the new feature onto the array
+        $featuresArray[] = $newFeature;
+        
+        //Implode the list back into a String
+        $featuresList = implode(', ', $featuresList);
+        
+        //Create the update statement
+        $update = 'UPDATE parks
+        SET features = :features
+        WHERE id = :id';
+        
+        $statement = $this->_pdo->prepare($update);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        $statement->bindValue(':features', $featuresList, PDO::PARAM_INT);
+        
+        $statement->execute();
         
    }
