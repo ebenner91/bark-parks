@@ -21,6 +21,7 @@ class Park
 {
     protected $name;
     protected $location;
+    protected $features;
     protected $description;
     
     /**
@@ -30,10 +31,11 @@ class Park
      *@param String $location the location of the park
      *@param String $description the description text about the park
      */
-    function __construct($title, $text, $bloggerId)
+    function __construct($name, $location, $features, $description)
     {
         $this->name = $name;
         $this->location = $location;
+        $this->features = $features;
         $this->description = $description;
     }
     
@@ -56,6 +58,16 @@ class Park
     function setLocation($location)
     {
         $this->location = $location;
+    }
+    
+    /**
+     *Setter for the park features
+     *
+     *@param String $features the features of the park
+     */
+    function setFeatures($features)
+    {
+        $this->features = $features;
     }
     
     /**
@@ -87,6 +99,16 @@ class Park
     function getLocation()
     {
         return $this->location;
+    }
+    
+    /**
+     *Getter for the park features
+     *
+     *@return String the features of the park
+     */
+    function getFeatures()
+    {
+        return $this->features;
     }
     
     /**
