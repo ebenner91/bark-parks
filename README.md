@@ -71,3 +71,7 @@ CREATE TABLE users (
     delete_comments TINYINT(1) NOT NULL
 );
 
+CREATE TABLE parkadmin (
+  id INT(3) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  admin_key VARCHAR(255) NOT NULL
+);

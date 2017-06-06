@@ -138,6 +138,49 @@ class BlogsDB
        //return the array holding the info pulled from the database 
        return $statement->fetch(PDO::FETCH_ASSOC);
    }
+   
+   /**
+    *Sets a key to allow users to create admin accounts
+    *
+    *@acess public
+    *@param String $key the secret key that users can enter to set up admin access
+    */
+   function setAdminKey($key)
+   {
+        //Create the insert statement
+        $insert = 'INSERT INTO parkadmin (admin_key)
+        VALUES (:admin_key)';
+        
+        $statement = $this->_pdo->prepare($insert);
+
+        $statement->bindValue(':admin_key', password_hash($key), PDO::PARAM_STR);
+        
+        $statement->execute();
+    
+    
+   }
+   
+   /**
+    *Verifies the admin key
+    *
+    *@access public
+    *@param String $key the given key to be verified
+    *
+    *@return boolean True if the key is a match, false if not
+    */
+   function checkAdminKey($key)
+   {
+        $select = 'SELECT key
+                    FROM parkadmin WHERE id = 1';
+                    
+        //prepare the statement and bind the id
+        $statement = $this->_pdo->prepare($select);
+        $statement->execute();
+        
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        return password_verify($key, $result['admin_key']);
+   }
     
     /**
     *Checks user credentials
