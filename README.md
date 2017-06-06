@@ -65,6 +65,9 @@ CREATE TABLE comments (
 CREATE TABLE users (
     id INT(3) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255),
-    password VARCHAR(255)
+    password VARCHAR(255),
+    delete_parks TINYINT(1) NOT NULL,
+    delete_photos TINYINT(1) NOT NULL,
+    delete_comments TINYINT(1) NOT NULL
 );
 

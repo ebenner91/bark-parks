@@ -44,7 +44,7 @@ class BlogsDB
     
     //Methods to access user information
     /**
-     *Creates a user in the database using a User object
+     *Creates a basic user in the database using a User object
      *
      *@access public
      *
@@ -52,16 +52,63 @@ class BlogsDB
      *
      *@return the database id of the new user
      */
-    function addUser($user)
+    function addBasicUser($user)
     {
         //Create the insert statement
-        $insert = 'INSERT INTO users (username, password)
-        VALUES (:username, :password)';
+        $insert = 'INSERT INTO users (username, password, delete_parks, delete_photos, delete_comments)
+        VALUES (:username, :password, 0, 0, 0)';
         
         $statement = $this->_pdo->prepare($insert);
 
         $statement->bindValue(':username', $user->getUsername(), PDO::PARAM_STR);
         $statement->bindValue(':password', $user->getPassword(), PDO::PARAM_STR);
+        
+        $statement->execute();
+        
+        //Return ID of inserted row
+        return $this->_pdo->lastInsertId();
+    }
+    
+    /**
+     *Creates an administrative user in the database using an AdminUser object
+     *
+     *@access public
+     *
+     *@param Object $user an AdminUser object containing username, password, and an array of permissions
+     *
+     *@return the database id of the new user
+     */
+    function addAdmin($user)
+    {
+        //Create the insert statement
+        $insert = 'INSERT INTO users (username, password, delete_parks, delete_photos, delete_comments)
+        VALUES (:username, :password, :delete_parks, :delete_photos, :delete_comments)';
+        
+        $statement = $this->_pdo->prepare($insert);
+        
+        //Process permissions array
+        $permissions = $user->getPermissions();
+        if(isset($permissions['parks'])) {
+            $deleteParks = 1;
+        } else {
+            $deleteParks = 0;
+        }
+        if(isset($permissions['photos'])) {
+            $deletePhotos = 1;
+        } else {
+            $deletePhotos = 0;
+        }
+        if(isset($permissions['comments'])) {
+            $deleteComments = 1;
+        } else {
+            $deleteComments = 0;
+        }
+
+        $statement->bindValue(':username', $user->getUsername(), PDO::PARAM_STR);
+        $statement->bindValue(':password', $user->getPassword(), PDO::PARAM_STR);
+        $statement->bindValue(':delete_parks', $deleteParks, PDO::PARAM_INT);
+        $statement->bindValue(':delete_photos', $deletePhotos, PDO::PARAM_INT);
+        $statement->bindValue(':delete_comments', $deleteComments, PDO::PARAM_INT);
         
         $statement->execute();
         
