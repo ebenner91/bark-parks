@@ -127,7 +127,7 @@ class BlogsDB
    function getUserById($id)
    {
         //Create the select statement
-       $select = 'SELECT id, username, password
+       $select = 'SELECT id, username, password, delete_parks, delete_photos, delete_comments
                     FROM users WHERE id=:id';
        
        //prepare the statement and bind the id
