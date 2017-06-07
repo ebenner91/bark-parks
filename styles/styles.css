@@ -35,3 +35,19 @@ body, html{
 .container{
     height: 100%;
 }
+
+.park-name p{
+    font-size: 20pt;
+}
+
+.featuredpics{
+    height: 20%;
+    width: 20%;
+    margin-left: 5%;
+}
+
+.rating{
+    font-size: 30pt;
+    padding: 2%;
+    text-align: center;
+}

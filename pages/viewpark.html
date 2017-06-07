@@ -28,30 +28,35 @@
         <div class="container">
             <div class="row park-name">
             <div class="col-sm-3">
-                 @DogPark Name
+                 <p class ="park-name">@DogPark Name</p>
             </div>
-            <div class="col-sm-9">
-                @Star Counter
+            <div class="col-sm-9 rating">
+                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
             </div>
            </div>
             <div class="row features">
-                <div class="col-sm-3">
-                Features:<br/>
-                feature1<br/>
-                feature2<br/>
-                feature3
+                <div class="col-sm-4">
+                <h3>Features:</h3>         
+				<ul>
+				<li>feature1</li>
+                <li>feature2</li>
+                <li>feature3</li>
+				</ul>
                 </div>
-                <div class="col-sm-9">
-                    Image1, Image2, Image3
+                <div class="col-sm-8">
+                    <img src="images/freja.PNG" class="featuredpics">
+					<img src="images/freja.PNG" class="featuredpics">
+					<img src="images/freja.PNG" class="featuredpics">
+					
                 </div>
             </div>
             <div class="row about-park">
                 <div class="col-sm-6">
-                    Description:<br/>
+                    <h3>Description:</h3><br/>
                     Descriptiontextwillgohere.
                 </div>
                 <div class="col-sm-6">
-                    Comments:<br/>
+                    <h3>Comments:</h3><br/>
                     Commentstextwillgohere.
                 </div>
             </div>
