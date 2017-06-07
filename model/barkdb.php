@@ -44,7 +44,7 @@ class BlogsDB
     
     //Methods to access user information
     /**
-     *Creates a user in the database using a User object
+     *Creates a basic user in the database using a User object
      *
      *@access public
      *
@@ -52,16 +52,63 @@ class BlogsDB
      *
      *@return the database id of the new user
      */
-    function addUser($user)
+    function addBasicUser($user)
     {
         //Create the insert statement
-        $insert = 'INSERT INTO users (username, password)
-        VALUES (:username, :password)';
+        $insert = 'INSERT INTO users (username, password, delete_parks, delete_photos, delete_comments)
+        VALUES (:username, :password, 0, 0, 0)';
         
         $statement = $this->_pdo->prepare($insert);
 
         $statement->bindValue(':username', $user->getUsername(), PDO::PARAM_STR);
         $statement->bindValue(':password', $user->getPassword(), PDO::PARAM_STR);
+        
+        $statement->execute();
+        
+        //Return ID of inserted row
+        return $this->_pdo->lastInsertId();
+    }
+    
+    /**
+     *Creates an administrative user in the database using an AdminUser object
+     *
+     *@access public
+     *
+     *@param Object $user an AdminUser object containing username, password, and an array of permissions
+     *
+     *@return the database id of the new user
+     */
+    function addAdmin($user)
+    {
+        //Create the insert statement
+        $insert = 'INSERT INTO users (username, password, delete_parks, delete_photos, delete_comments)
+        VALUES (:username, :password, :delete_parks, :delete_photos, :delete_comments)';
+        
+        $statement = $this->_pdo->prepare($insert);
+        
+        //Process permissions array
+        $permissions = $user->getPermissions();
+        if(isset($permissions['parks'])) {
+            $deleteParks = 1;
+        } else {
+            $deleteParks = 0;
+        }
+        if(isset($permissions['photos'])) {
+            $deletePhotos = 1;
+        } else {
+            $deletePhotos = 0;
+        }
+        if(isset($permissions['comments'])) {
+            $deleteComments = 1;
+        } else {
+            $deleteComments = 0;
+        }
+
+        $statement->bindValue(':username', $user->getUsername(), PDO::PARAM_STR);
+        $statement->bindValue(':password', $user->getPassword(), PDO::PARAM_STR);
+        $statement->bindValue(':delete_parks', $deleteParks, PDO::PARAM_INT);
+        $statement->bindValue(':delete_photos', $deletePhotos, PDO::PARAM_INT);
+        $statement->bindValue(':delete_comments', $deleteComments, PDO::PARAM_INT);
         
         $statement->execute();
         
@@ -80,7 +127,7 @@ class BlogsDB
    function getUserById($id)
    {
         //Create the select statement
-       $select = 'SELECT id, username, password
+       $select = 'SELECT id, username, password, delete_parks, delete_photos, delete_comments
                     FROM users WHERE id=:id';
        
        //prepare the statement and bind the id
@@ -90,6 +137,49 @@ class BlogsDB
        
        //return the array holding the info pulled from the database 
        return $statement->fetch(PDO::FETCH_ASSOC);
+   }
+   
+   /**
+    *Sets a key to allow users to create admin accounts
+    *
+    *@acess public
+    *@param String $key the secret key that users can enter to set up admin access
+    */
+   function setAdminKey($key)
+   {
+        //Create the insert statement
+        $insert = 'INSERT INTO parkadmin (admin_key)
+        VALUES (:admin_key)';
+        
+        $statement = $this->_pdo->prepare($insert);
+
+        $statement->bindValue(':admin_key', password_hash($key), PDO::PARAM_STR);
+        
+        $statement->execute();
+    
+    
+   }
+   
+   /**
+    *Verifies the admin key
+    *
+    *@access public
+    *@param String $key the given key to be verified
+    *
+    *@return boolean True if the key is a match, false if not
+    */
+   function checkAdminKey($key)
+   {
+        $select = 'SELECT key
+                    FROM parkadmin WHERE id = 1';
+                    
+        //prepare the statement and bind the id
+        $statement = $this->_pdo->prepare($select);
+        $statement->execute();
+        
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        return password_verify($key, $result['admin_key']);
    }
     
     /**
