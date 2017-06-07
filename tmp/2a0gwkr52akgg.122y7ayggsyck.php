@@ -38,7 +38,11 @@
                     <th>Park</th>
                     <th>Location</th>
                     <th>Rating</th>
-                    <th>Edit</th>
+                    <?php if ($SESSION['loggedin'] == true): ?>
+						
+							<th>Edit</th>
+						
+					<?php endif; ?>
                 </tr>
             </thead>
             <tbody>
@@ -47,7 +51,11 @@
 						<td><a href="./viewpark/<?= $park['id'] ?>"><?= $park['park_name'] ?></a></td>
 						<td><?= $park['location'] ?></td>
 						<td><?= $park['rating'] ?></td>
-						<td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
+						<?php if ($SESSION['loggedin'] == true): ?>
+							
+								<td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
+							
+						<?php endif; ?>
 					</tr><!-- end of loop-->
 				<?php endforeach; ?>
                 

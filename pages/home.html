@@ -38,7 +38,11 @@
                     <th>Park</th>
                     <th>Location</th>
                     <th>Rating</th>
-                    <th>Edit</th>
+                    <check if="{{ @SESSION.loggedin == true }}">
+						<true>
+							<th>Edit</th>
+						</true>
+					</check>
                 </tr>
             </thead>
             <tbody>
@@ -47,7 +51,11 @@
 						<td><a href="./viewpark/{{ @park['id'] }}">{{ @park['park_name'] }}</a></td>
 						<td>{{ @park['location'] }}</td>
 						<td>{{ @park['rating'] }}</td>
-						<td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
+						<check if="{{ @SESSION.loggedin == true }}">
+							<true>
+								<td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
+							</true>
+						</check>
 					</tr><!-- end of loop-->
 				</repeat>
                 
