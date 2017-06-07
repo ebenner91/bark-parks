@@ -32,7 +32,7 @@
      
          <div class="container">
             
-       <table id="parks-table" class="table table-responsive">
+       <table id="parks-table" class="table table-responsive table-striped">
             <thead>
                 <tr>  
                     <th>Park</th>
@@ -42,12 +42,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><!-- Loop for data should begin here-->
-                  <td>ParkName1</td>
-                  <td>ParkLocation1</td>
-                  <td>3 out of 5</td>
-                  <td>Picture of a Pencil.jpeg</td>
-                </tr><!-- end of loop-->
+				<?php foreach (($parks?:[]) as $park): ?>
+					<tr><!-- Loop for data should begin here-->
+						<td><?= $park['park_name'] ?></td>
+						<td><?= $park['location'] ?></td>
+						<td><?= $park['rating'] ?></td>
+						<td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
+					</tr><!-- end of loop-->
+				<?php endforeach; ?>
+                
             </tbody>
             
         </table>     

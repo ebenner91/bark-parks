@@ -279,7 +279,12 @@ class BarkDB
         
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         
-        $result['rating'] = intdiv($result['sum_ratings'], $result['num_ratings']);
+        if($result['num_ratings'] != 0) {
+            $result['rating'] = floor($result['sum_ratings'] / $result['num_ratings']);
+        } else {
+            $result['rating'] = 0;
+        }
+        
         
         //return the array holding the info pulled from the database 
         return $result;
@@ -302,7 +307,12 @@ class BarkDB
        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
        
        foreach($results as $row) {
-            $row['rating'] = intdiv($row['sum_ratings'], $row['num_ratings']);
+            if($row['num_ratings'] != 0) {
+                $row['rating'] = floor($row['sum_ratings'] / $row['num_ratings']);
+            } else {
+                $row['rating'] = 0;
+            }
+            
        }
        
        return $results;
@@ -398,6 +408,6 @@ class BarkDB
         $statement->execute();
    }
    
-   
+}
    
    

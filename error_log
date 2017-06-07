@@ -149,3 +149,26 @@ Stack trace:
 [06-Jun-2017 20:22:05 America/Chicago] PHP Fatal error:  Class 'BarkDB' not found in /home/ebenner/public_html/328/bark-parks/index.php on line 10
 [06-Jun-2017 20:22:05 America/Chicago] Fatal error: Class 'BarkDB' not found
 [06-Jun-2017 20:22:05 America/Chicago] [328/bark-parks/index.php:10] 
+[06-Jun-2017 20:24:01 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) in /home/ebenner/public_html/328/bark-parks/model/barkdb.php on line 403
+[06-Jun-2017 20:24:01 America/Chicago] Fatal error: syntax error, unexpected end of file, expecting function (T_FUNCTION)
+[06-Jun-2017 20:24:01 America/Chicago] [328/bark-parks/model/barkdb.php:403] 
+[06-Jun-2017 20:24:26 America/Chicago] PHP Fatal error:  Call to undefined function intdiv() in /home/ebenner/public_html/328/bark-parks/model/barkdb.php on line 305
+[06-Jun-2017 20:24:26 America/Chicago] Fatal error: Call to undefined function intdiv()
+[06-Jun-2017 20:24:26 America/Chicago] [328/bark-parks/model/barkdb.php:305] 
+[06-Jun-2017 20:35:26 America/Chicago] PHP Fatal error:  Call to undefined function intdiv() in /home/ebenner/public_html/328/bark-parks/model/barkdb.php on line 305
+[06-Jun-2017 20:35:26 America/Chicago] Fatal error: Call to undefined function intdiv()
+[06-Jun-2017 20:35:26 America/Chicago] [328/bark-parks/model/barkdb.php:305] 
+[06-Jun-2017 20:35:46 America/Chicago] floor() expects exactly 1 parameter, 2 given
+[06-Jun-2017 20:35:46 America/Chicago] [328/bark-parks/vendor/bcosca/fatfree-core/base.php:2178] Base->error()
+[06-Jun-2017 20:35:46 America/Chicago] [328/bark-parks/model/barkdb.php:305] floor()
+[06-Jun-2017 20:35:46 America/Chicago] [328/bark-parks/index.php:13] BarkDB->getAllParks()
+[06-Jun-2017 20:35:46 America/Chicago] [328/bark-parks/vendor/bcosca/fatfree-core/base.php:1791] call_user_func_array()
+[06-Jun-2017 20:35:46 America/Chicago] [328/bark-parks/vendor/bcosca/fatfree-core/base.php:1612] Base->call()
+[06-Jun-2017 20:35:46 America/Chicago] [328/bark-parks/index.php:39] Base->run()
+[06-Jun-2017 20:36:22 America/Chicago] Division by zero
+[06-Jun-2017 20:36:22 America/Chicago] [328/bark-parks/vendor/bcosca/fatfree-core/base.php:2178] Base->error()
+[06-Jun-2017 20:36:22 America/Chicago] [328/bark-parks/model/barkdb.php:305] Base->{closure}()
+[06-Jun-2017 20:36:22 America/Chicago] [328/bark-parks/index.php:13] BarkDB->getAllParks()
+[06-Jun-2017 20:36:22 America/Chicago] [328/bark-parks/vendor/bcosca/fatfree-core/base.php:1791] call_user_func_array()
+[06-Jun-2017 20:36:22 America/Chicago] [328/bark-parks/vendor/bcosca/fatfree-core/base.php:1612] Base->call()
+[06-Jun-2017 20:36:22 America/Chicago] [328/bark-parks/index.php:39] Base->run()
