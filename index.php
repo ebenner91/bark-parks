@@ -42,6 +42,20 @@
     });
 	
     $f3->route('POST /newaccount', function($f3) {
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+		$password2 = $_POST['password2'];
+		$key = $_POST['key'];
+
+		if($password == $password2){
+			if(isset($_POST['admin'])){
+			//create admin account
+		}
+		else{
+			//make normal account
+		}
+		}
+		
         $view = new View;
         echo Template::instance()->render('pages/newaccount.html');
     });     

@@ -49,9 +49,22 @@
                            <input type="password" class="form-control" id="password2" placeholder="Repeat password">
                          </div>
                        </div>                       
-                       <div class="form-group"> 
+                       <div class="form-group">
+						<label class="control-label col-sm-2" for="password">Key:</label>
+						<div class="col-sm-10"> 
+						<input type="password" name="key" class="form-control" placeholder="For admin use only">
+						</div>
                        </div>
-                       <div class="form-group"> 
+                       <div class="form-group">
+						Permissions<br/>
+						<label class="form-check-label">
+						<input type="checkbox" name="admin[parks]" value="Parks">Delete Parks
+						</label><br/><label class="form-check-label">
+						<input type="checkbox" name="admin[photos]" value="Photos">Delete Photos
+						</label>
+						<br/><label class="form-check-label">
+						<input type="checkbox" name="admin[comments]" value="Comments">Delete Comments
+						</label><br/>
                          <div class="col-sm-offset-2 col-sm-10">
                            <button type="submit" class="btn btn-default btn-center">Submit</button>
                          </div>
