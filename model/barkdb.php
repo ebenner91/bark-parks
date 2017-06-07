@@ -16,7 +16,7 @@
      */
     
 
-class BlogsDB
+class BarkDB
 {
     private $_pdo;
     

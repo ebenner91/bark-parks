@@ -146,3 +146,6 @@ Stack trace:
 [31-May-2017 22:16:28 America/Chicago] PHP Parse error:  syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';' in /home/jchurch/public_html/328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php on line 39
 [31-May-2017 22:16:28 America/Chicago] Fatal error: syntax error, unexpected 'Name' (T_STRING), expecting ',' or ';'
 [31-May-2017 22:16:28 America/Chicago] [328/bark-parks/tmp/1jfha243vmwkt.29hp4rcwp1j40.php:39] 
+[06-Jun-2017 20:22:05 America/Chicago] PHP Fatal error:  Class 'BarkDB' not found in /home/ebenner/public_html/328/bark-parks/index.php on line 10
+[06-Jun-2017 20:22:05 America/Chicago] Fatal error: Class 'BarkDB' not found
+[06-Jun-2017 20:22:05 America/Chicago] [328/bark-parks/index.php:10] 

@@ -6,8 +6,14 @@
     $f3 = Base::instance();
     $f3->set('DEBUG', 3);
     
+    //Instantiate the database class
+	$barkDB = new BarkDB();
+    
     $f3->route('GET /', function($f3) {
-        $view = new View;
+        $parks = $GLOBALS['barkDB']->getAllParks();
+        
+        $f3->set("parks", $parks);
+        
         echo Template::instance()->render('pages/home.html');
     });
       
