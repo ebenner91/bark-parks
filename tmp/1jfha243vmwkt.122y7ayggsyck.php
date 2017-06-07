@@ -6,7 +6,9 @@
 	<meta name ="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="styles/styles.css">
+	<link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 	<title>Bark Parks</title>
+	
 	</head>
     <body>
         
@@ -29,20 +31,8 @@
      
      
          <div class="container">
-            <div class="col-sm-12 col-md-12 col-xl-12">
-                 <div class="row">
-                 <div class="col-sm-5"></div>
-             <form class="navbar-form col-sm-6" role="search">
-         <div class="input-group add-on">
-              <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
-              <div class="input-group-btn">
-               <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-             </div>
-         </div>
-        </form>
-       </div> <!-- end of row-->
-     </div>
-       <table class="table table-responsive">
+            
+       <table id="parks-table" class="table table-responsive table-striped">
             <thead>
                 <tr>  
                     <th>Park</th>
@@ -52,16 +42,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><!-- Loop for data should begin here-->
-                  <td>ParkName1</td>
-                  <td>ParkLocation1</td>
-                  <td>3 out of 5</td>
-                  <td>Picture of a Pencil.jpeg</td>
-                </tr><!-- end of loop-->
+				<?php foreach (($parks?:[]) as $park): ?>
+					<tr><!-- Loop for data should begin here-->
+						<td><?= $park['park_name'] ?></td>
+						<td><?= $park['location'] ?></td>
+						<td><?= $park['rating'] ?></td>
+						<td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
+					</tr><!-- end of loop-->
+				<?php endforeach; ?>
+                
             </tbody>
             
         </table>     
             
-     </div>   
+     </div>
+		<script
+		src="https://code.jquery.com/jquery-3.2.1.min.js"
+		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+		crossorigin="anonymous"></script>
+		<script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+		<script src="scripts/script.js"></script>
     </body>
 </html>

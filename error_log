@@ -172,3 +172,6 @@ Stack trace:
 [06-Jun-2017 20:36:22 America/Chicago] [328/bark-parks/vendor/bcosca/fatfree-core/base.php:1791] call_user_func_array()
 [06-Jun-2017 20:36:22 America/Chicago] [328/bark-parks/vendor/bcosca/fatfree-core/base.php:1612] Base->call()
 [06-Jun-2017 20:36:22 America/Chicago] [328/bark-parks/index.php:39] Base->run()
+[06-Jun-2017 22:09:59 America/Chicago] HTTP 405 (POST /login)
+[06-Jun-2017 22:09:59 America/Chicago] [328/bark-parks/vendor/bcosca/fatfree-core/base.php:1661] Base->error()
+[06-Jun-2017 22:09:59 America/Chicago] [328/bark-parks/index.php:39] Base->run()
