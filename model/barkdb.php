@@ -153,7 +153,7 @@ class BarkDB
         
         $statement = $this->_pdo->prepare($insert);
 
-        $statement->bindValue(':admin_key', password_hash($key), PDO::PARAM_STR);
+        $statement->bindValue(':admin_key', password_hash($key, PASSWORD_DEFAULT), PDO::PARAM_STR);
         
         $statement->execute();
     

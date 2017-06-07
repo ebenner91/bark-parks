@@ -58,7 +58,7 @@
 		
         $view = new View;
         echo Template::instance()->render('pages/newaccount.html');
-    });     
+    });
     
     
     $f3->route('GET /viewpark', function($f3) {

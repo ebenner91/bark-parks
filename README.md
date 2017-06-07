@@ -75,3 +75,6 @@ CREATE TABLE parkadmin (
   id INT(3) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   admin_key VARCHAR(255) NOT NULL
 );
+
+Admin Key (remove from readme before presenting): 
+SEkqm=3$9WX/[dRv
