@@ -6,7 +6,9 @@
 	<meta name ="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="styles/styles.css">
+	<link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 	<title>Bark Parks</title>
+	
 	</head>
     <body>
         
@@ -15,40 +17,22 @@
         <div class="container-fluid">
          <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-             </button>
               <a class="navbar-brand" href="./">BarkParks</a>
           </div>
          <!-- Collect the nav links, forms, and other content for toggling -->
-         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
               <ul class="nav navbar-nav">
                 <li class="active"><a href="./">Home <span class="sr-only">(current)</span></a></li>
                 <li><a href="./login">Login</a></li>
                 <li><a href="./newaccount">Create an Account</a></li>
               </ul>
-        </div><!-- /.container-fluid -->
+
         </nav>
      
      
          <div class="container">
-            <div class="col-sm-12 col-md-12 col-xl-12">
-                 <div class="row">
-                 <div class="col-sm-5"></div>
-             <form class="navbar-form col-sm-6" role="search">
-         <div class="input-group add-on">
-              <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
-              <div class="input-group-btn">
-               <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-             </div>
-         </div>
-        </form>
-       </div> <!-- end of row-->
-     </div>
-       <table class="table table-responsive">
+            
+       <table id="parks-table" class="table table-responsive">
             <thead>
                 <tr>  
                     <th>Park</th>
@@ -68,6 +52,12 @@
             
         </table>     
             
-     </div>   
+     </div>
+		<script
+		src="https://code.jquery.com/jquery-3.2.1.min.js"
+		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+		crossorigin="anonymous"></script>
+		<script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+		<script src="scripts/script.js"></script>
     </body>
 </html>
