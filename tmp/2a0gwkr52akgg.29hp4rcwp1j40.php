@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row park-name">
             <div class="col-sm-3">
-                 <p class ="park-name">{{ @park['park_name'] }}</p>
+                 <p class ="park-name"><?= $park['park_name'] ?></p>
             </div>
             <div class="col-sm-9 rating">
                 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
@@ -38,9 +38,9 @@
                 <div class="col-sm-4">
                 <h3>Features:</h3>         
 				<ul>
-				<repeat group="{{ @park['features'] }}" value="{{ @feature }}">
-					<li>{{ @feature }}</li>
-				</repeat>
+				<?php foreach (($park['features']?:[]) as $feature): ?>
+					<li><?= $feature ?></li>
+				<?php endforeach; ?>
 				</ul>
                 </div>
                 <div class="col-sm-8">
@@ -53,7 +53,7 @@
             <div class="row about-park">
                 <div class="col-sm-6">
                     <h3>Description:</h3><br/>
-                    {{ @park['description'] }}
+                    <?= $park['description'].PHP_EOL ?>
                 </div>
                 <div class="col-sm-6">
                     <h3>Comments:</h3><br/>

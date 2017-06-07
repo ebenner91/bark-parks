@@ -44,7 +44,7 @@
             <tbody>
 				<?php foreach (($parks?:[]) as $park): ?>
 					<tr><!-- Loop for data should begin here-->
-						<td><?= $park['park_name'] ?></td>
+						<td><a href="./viewpark/<?= $park['id'] ?>"><?= $park['park_name'] ?></a></td>
 						<td><?= $park['location'] ?></td>
 						<td><?= $park['rating'] ?></td>
 						<td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>

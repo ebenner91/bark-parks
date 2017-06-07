@@ -12,7 +12,6 @@
     
     $f3->route('GET /', function($f3) {
         $parks = $GLOBALS['barkDB']->getAllParks();
-        
         $f3->set("parks", $parks);
         
         echo Template::instance()->render('pages/home.html');
@@ -61,8 +60,9 @@
     });
     
     
-    $f3->route('GET /viewpark', function($f3) {
-        $view = new View;
+    $f3->route('GET /viewpark/@id', function($f3, $params) {
+		$park =  $GLOBALS['barkDB']->getParkById($params['id']);
+		$f3->set('park', $park);
         echo Template::instance()->render('pages/viewpark.html');
     });         
         //Run fat free    
