@@ -51,3 +51,40 @@ body, html{
     padding: 2%;
     text-align: center;
 }
+
+/*CSS for star ratings*/
+.rate_widget {
+    background-color: white;
+    border:     1px solid black;
+    overflow:   visible;
+    padding:    10px;
+    position:   relative;
+    width:      185px;
+    height:     50px;
+}
+.ratings_stars {
+    background: url('../images/star_empty.png') no-repeat;
+    float:      left;
+    height:     28px;
+    padding:    2px;
+    width:      32px;
+}
+.ratings_vote {
+    background: url('../images/star_full.png') no-repeat;
+}
+.ratings_over {
+    background: url('../images/star_highlight.png') no-repeat;
+}
+
+.total_votes {
+    background: #eaeaea;
+    top: 58px;
+    left: 0;
+    padding: 5px;
+    position:   absolute;  
+} 
+.park_rating {
+    font: 10px verdana, sans-serif;
+    margin: 0 auto 40px auto;
+    width: 180px;
+}

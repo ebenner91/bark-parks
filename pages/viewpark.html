@@ -30,9 +30,17 @@
             <div class="col-sm-3">
                  <p class ="park-name">{{ @park['park_name'] }}</p>
             </div>
-            <div class="col-sm-9 rating">
-                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-            </div>
+              <div class='row park_rating'>
+					Rate:
+					<div id="{{ @park['id'] }}" class="rate_widget">
+						<div class="star_1 ratings_stars"></div>
+						<div class="star_2 ratings_stars"></div>
+						<div class="star_3 ratings_stars"></div>
+						<div class="star_4 ratings_stars"></div>
+						<div class="star_5 ratings_stars"></div>
+						<div class="total_votes">vote data</div>
+					</div>
+				</div>  
            </div>
             <div class="row features">
                 <div class="col-sm-4">
@@ -64,6 +72,12 @@
      
    
             
-     </div>   
+     </div>
+		<script
+		src="https://code.jquery.com/jquery-3.2.1.min.js"
+		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+		crossorigin="anonymous"></script>
+		<script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+		<script src="../scripts/script.js"></script>
     </body>
 </html>
