@@ -301,22 +301,22 @@ class BarkDB
         $select = 'SELECT id, park_name, location, num_ratings, sum_ratings, features, description
                     FROM parks ORDER BY park_name';
                     
-       $statement = $this->_pdo->prepare($select);
+        $statement = $this->_pdo->prepare($select);
+         
+        $statement->execute();
+         
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         
-       $statement->execute();
+        foreach($results as &$row) {
+             if($row['num_ratings'] != 0) {
+                 $row['rating'] = floor($row['sum_ratings'] / $row['num_ratings']);
+             } else {
+                 $row['rating'] = 0;
+             }
+             
+        }
         
-       $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-       
-       foreach($results as &$row) {
-            if($row['num_ratings'] != 0) {
-                $row['rating'] = floor($row['sum_ratings'] / $row['num_ratings']);
-            } else {
-                $row['rating'] = 0;
-            }
-            
-       }
-       
-       return $results;
+        return $results;
    }
    
    /**
@@ -330,7 +330,7 @@ class BarkDB
    {
         //Create the update statement
         $update = 'UPDATE parks
-        SET sum_rating = sum_rating + :new_rating, num_rating = num_rating + 1
+        SET sum_ratings = sum_ratings + :new_rating, num_ratings = num_ratings + 1
         WHERE id = :id';
         
         $statement = $this->_pdo->prepare($update);
@@ -342,6 +342,34 @@ class BarkDB
         
    }
    
+   /**
+    *Fetches the rating info for the database
+    *
+    *@access public
+    *@param int $id the id of the park whose ratings are being retrieved
+    *
+    *@return an associative array containing the rating info
+    */
+   function getRating($id)
+   {
+        $select = 'SELECT id, num_ratings, sum_ratings
+                    FROM parks WHERE id=:id';
+                    
+        $statement = $this->_pdo->prepare($select);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+         
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        if($result['num_ratings'] != 0) {
+            $result['avg_rating'] = floor($result['sum_ratings'] / $result['num_ratings']);
+        } else {
+            $result['avg_rating'] = 0;
+        }
+        
+        return $result;
+   }
+   
    
    /**
     *Adds a feature to the features list by pulling the list from the database,
@@ -350,8 +378,9 @@ class BarkDB
     *
     *@param int $id the id of the park to be updated
     *@param String $newFeature the new feature to be added to the list
+    *@return boolean true if feature added successfully, false if not
     */
-   function addFeature($id, $newFeature)
+   function addFeature($id, $newFeatures)
    {
         //Select the current features list from the database
         $select = 'SELECT features
@@ -370,11 +399,26 @@ class BarkDB
         //Explode the list into an array
         $featuresArray = explode(', ', $featuresList);
         
-        //Push the new feature onto the array
-        $featuresArray[] = $newFeature;
+        $newFeatures = explode(', ', $newFeatures);
         
+        if(count($newFeatures > 1)) {
+            foreach($newFeatures as $newFeature) {
+                //Validate that feature is not already in array
+                if(in_array($newFeature, $featuresArray)) {
+                    //If already in array, do not add feature, return false
+                    return false;
+                } else {
+                    
+                    //Push the new feature onto the array
+                    $featuresArray[] = $newFeature;
+                }
+            }
+        } else {
+           $featuresArray = array_merge($featuresArray, $newFeatures);
+        }
+            
         //Implode the list back into a String
-        $featuresList = implode(', ', $featuresList);
+        $featuresList = implode(', ', $featuresArray);
         
         //Create the update statement
         $update = 'UPDATE parks
@@ -387,7 +431,10 @@ class BarkDB
         
         $statement->execute();
         
-   }
+        //Feature(s) added successfully, return true
+        return true;
+        
+    }
    
    /**
     *Updates the park description
@@ -405,6 +452,68 @@ class BarkDB
         $statement = $this->_pdo->prepare($update);
         $statement->bindValue(':id', $id, PDO::PARAM_INT);
         $statement->bindValue(':description', $description, PDO::PARAM_STR);
+        
+        $statement->execute();
+   }
+   
+   /**
+    *Retrieves the comments for a given park
+    *
+    *@param int $id the id of the park whose comments are to be returned
+    *@return an associative array holding the comments for the given park
+    */
+   function getComments($id)
+   {
+        $select = 'SELECT id, park_id, text, username, date_posted
+                    FROM comments WHERE park_id = :park_id ORDER BY date_posted';
+                    
+        $statement = $this->_pdo->prepare($select);
+        $statement->bindValue(':park_id', $id, PDO::PARAM_INT);
+         
+        $statement->execute();
+         
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $results;
+   }
+   
+   /**
+    *Retrieves the image paths for a given park
+    *
+    *@param int $id the id of the park whose images are being returned
+    *@return an associative array holding the image paths for the given park
+    */
+   function getImages($id)
+   {
+        $select = 'SELECT id, parkid, image_path
+                    FROM images WHERE parkid = :parkid';
+                    
+        $statement = $this->_pdo->prepare($select);
+        $statement->bindValue(':parkid', $id, PDO::PARAM_INT);
+         
+        $statement->execute();
+         
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $results;
+   }
+   
+   /**
+    *Adds an image filepath to the database
+    *
+    *@param int $parkId the id of the park associated with the photo
+    *@param String $filePath the file path for the image being uploaded
+    */
+   function addPhoto($parkId, $filePath)
+   {
+        //Create the insert statement
+        $insert = 'INSERT INTO images (parkid, image_path)
+        VALUES (:parkid, :image_path)';
+        
+        $statement = $this->_pdo->prepare($insert);
+
+        $statement->bindValue(':parkid', $parkId, PDO::PARAM_INT);
+        $statement->bindValue(':image_path', $filePath, PDO::PARAM_STR);
         
         $statement->execute();
    }

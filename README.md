@@ -24,13 +24,15 @@ and an AdminUser class which extends User to create administrative users with ex
 A database access class is also used as part of MVC to cintain all database access methods.
 
 Contains full Docblocks for all PHP files.
--
+- Done
 
 Has full validation on the client side through JavaScript and server side through PHP.
 -
 
 Incorporates jQuery and Ajax.
--
+- Used jQuery and Ajax on star ratings system to pull ratings from the database and to update ratings when a
+user clicks on a star to denote their rating. Also uses Ajax on the create user form to verify that a username has not already
+been used.
 
 BONUS:  Utilizes an API
 

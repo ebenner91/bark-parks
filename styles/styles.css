@@ -36,6 +36,10 @@ body, html{
     height: 100%;
 }
 
+.comment-block{
+    height: 35%;
+}
+
 .park-name p{
     font-size: 20pt;
 }
@@ -52,7 +56,11 @@ body, html{
     text-align: center;
 }
 
-/*CSS for star ratings*/
+/*
+ *CSS for star ratings, adapted from a tutorial at
+ *https://code.tutsplus.com/tutorials/building-a-5-star-rating-system-with-jquery-ajax-and-php--net-11541
+ *Some small changes made to work with our own styling
+*/
 .rate_widget {
     background-color: white;
     border:     1px solid black;
@@ -88,3 +96,6 @@ body, html{
     margin: 0 auto 40px auto;
     width: 180px;
 }
+
+/* End of styling for star ratings */
+
