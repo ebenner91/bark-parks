@@ -114,6 +114,9 @@
 				$f3->set('featureErrorText', 'One or more of your features was already on file, please try again');
 			}
 		}
+		if(isset($_POST['comment-submit'])) {
+			
+		}
 		$park =  $GLOBALS['barkDB']->getParkById($params['id']);
 		$comments = $GLOBALS['barkDB']->getComments($params['id']);
 		$images = $GLOBALS['barkDB']->getImages($params['id']);

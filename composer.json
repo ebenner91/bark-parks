@@ -11,7 +11,8 @@
                 }
                 ],
     "require": {
-    "bcosca/fatfree-core": "dev-master"
+    "bcosca/fatfree-core": "dev-master",
+    "snipe/banbuilder": "dev-master"
     },
     "autoload":{
 		"classmap": ["model/", "classes/"]
