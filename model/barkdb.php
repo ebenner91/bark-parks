@@ -518,6 +518,18 @@ class BarkDB
         $statement->execute();
    }
    
+   /**
+    *Adds a comment to the database
+    *
+    *@param String $comment the text of the comment to be added
+    *@param String $username the username of the user submitting the comment
+    *@param int $parkId, the id of the park the comment is being submitted on
+    */
+   function addComment($comment, $username, $parkId)
+   {
+        
+   }
+   
 }
    
    

@@ -1,5 +1,5 @@
-# Use PHP54 as default
-AddHandler application/x-httpd-php54 .php
+# Use PHP70 as default
+AddHandler application/x-httpd-php70 .php
 <IfModule mod_suphp.c>
-    suPHP_ConfigPath /opt/php54/lib
+    suPHP_ConfigPath /opt/php70/lib
 </IfModule>
