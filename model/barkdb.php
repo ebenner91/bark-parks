@@ -527,7 +527,20 @@ class BarkDB
     */
    function addComment($comment, $username, $parkId)
    {
+        //Create the insert statement
+        $insert = 'INSERT INTO comments (parkid, text, username, date_posted)
+        VALUES (:parkid, :text, :username, NOW())';
         
+        $statement = $this->_pdo->prepare($insert);
+
+        $statement->bindValue(':parkid', $parkId, PDO::PARAM_INT);
+        $statement->bindValue(':text', $comment, PDO::PARAM_STR);
+        $statement->bindValue(':username', $username, PDO::PARAM_STR);
+        
+        $statement->execute();
+        
+        //Comment added successfully, return true
+        return true;
    }
    
 }

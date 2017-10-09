@@ -115,7 +115,13 @@
 			}
 		}
 		if(isset($_POST['comment-submit'])) {
-			
+			if($GLOBALS['barkDB']->addComment($_SESSION['username'], $_POST['comment'],$params['id'])) {
+				$f3->set('commentSuccess', true);
+				$f3->set('commentSuccessText', 'Comment submitted successfully!');
+			} else {
+				$f3->set('commentSuccess', false);
+				$f3->set('commentErrorText', 'Unable to submit comment, please try again.');
+			}
 		}
 		$park =  $GLOBALS['barkDB']->getParkById($params['id']);
 		$comments = $GLOBALS['barkDB']->getComments($params['id']);
