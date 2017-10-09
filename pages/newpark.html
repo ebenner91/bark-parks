@@ -20,47 +20,51 @@
          <!-- Collect the nav links, forms, and other content for toggling -->
               <ul class="nav navbar-nav">
                 <li><a href="./">Home</a></li>
-                <li class="active"><a href="./login">Login <span class="sr-only">(current)</span></a></li>
+                <li><a href="./login">Login</a></li>
                 <li><a href="./newaccount">Create an Account</a></li>
               </ul>
         </nav>
         
         <div class="container">
             <div class="row">
-                <div class="center">
-                    <h4>Welcome!</h4>
+                <div class="col-sm-3"></div>
+                <div class="center col-sm-6">
+                    <h4>Add a New Park:</h4>
                     <hr>
-                     <form class="form-horizontal" method="post" action="./login">
+                     <form class="form-horizontal" method="post" action="./newpark">
                        <div class="form-group">
-                         <label class="control-label col-sm-2" for="email">Email:</label>
+                         <label class="control-label col-sm-2" for="name">Name:</label>
                          <div class="col-sm-10">
-                           <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                           <input type="text" class="form-control" id="name" placeholder="Enter Park Name">
                          </div>
                        </div>
                        <div class="form-group">
-                         <label class="control-label col-sm-2" for="password">Password:</label>
+                         <label class="control-label col-sm-2" for="location">Location:</label>
                          <div class="col-sm-10"> 
-                           <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+                           <input type="text" class="form-control" id="location" placeholder="Enter Park Location">
                          </div>
                        </div>
-                       <div class="form-group"> 
+                       <div class="form-group">
+                         <label class="control-label col-sm-2" for="features">Features:</label>
+                         <div class="col-sm-10"> 
+                           <textarea type="text" class="form-control" id="features" placeholder="Enter Park Features"></textarea>
+                         </div>
                        </div>
-                       <div class="form-group"> 
+                       <div class="form-group">
+                         <label class="control-label col-sm-2" for="description">Description:</label>
+                         <div class="col-sm-10"> 
+                           <textarea type="text" class="form-control" id="description" placeholder="Enter Park Description"></textarea>
+                         </div>
+                       </div>
+                       <div class="form-group">
                          <div class="col-sm-offset-2 col-sm-10">
-                            <div class="checkbox btn-center">
-                             <label><input type="checkbox"><p class="text-small">Remember me</p></label>
-                           </div>
-                           <button type="submit" class="btn btn-default btn-center">Sign in</button>
+                           <button type="submit" class="btn btn-default btn-center">Submit</button>
                          </div>
                        </div>
                      </form>
-                </div>
-            
+                </div>        
            </div> 
         </div>
-     
-   
-            
      </div>   
     </body>
 </html>
