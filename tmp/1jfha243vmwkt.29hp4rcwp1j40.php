@@ -95,7 +95,7 @@
                     <?= $park['description'].PHP_EOL ?>
                 </div>
                 <div class="col-sm-6">
-                    <h3>Comments:</h3><br/>
+                    <h3>Comments:</h3><button class="btn" data-toggle="modal" data-target="#comment-modal">Add Comment</button><br/>
 					<div class="comment-block responsive">
 						<?php foreach (($comments?:[]) as $comment): ?>
 							<blockquote class="comment">
@@ -188,6 +188,34 @@
 						</div>
 					</div>
 					<button type="submit" name="feature-submit" class="btn btn-default center-block btn-gray" value="create">Submit Feature(s)</button>
+				</form>
+			</p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  </div>
+		</div>
+		</div>
+	</div>
+	<!-- /modal -->
+	
+	<!-- Add Comment Modal -->
+	<div id="comment-modal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Add Comment</h4>
+		  </div>
+		  <div class="modal-body">
+			<p>
+				<form method="post" action="/328/bark-parks/viewpark/<?= $park['id'] ?>" enctype="multipart/form-data" name="info">
+						<div class="form-group">
+							<div class="input-group-addon textarea-addon"> Leave a Comment </div>
+							<textarea name="comment" class="form-control" rows="3" required></textarea>
+                        </div>
+					<button type="submit" name="comment-submit" class="btn btn-default center-block btn-gray" value="create">Submit Comment</button>
 				</form>
 			</p>
 		  </div>

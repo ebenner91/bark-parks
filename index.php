@@ -42,12 +42,12 @@
     });
 	
     $f3->route('POST /login', function($f3) {
-		$username = $_POST['username'];
+		$username = $_POST['email'];
 		$password = $_POST['password'];
 		$barkDB = $GLOBALS['barkDB'];
 		if($barkDB->login($username, $password)){
 			$f3->set("SESSION.loggedin",  true);
-			echo "header('Location: ../)";
+			header('Location: ./');
 		}
         $view = new View;
         echo Template::instance()->render('pages/login.html');
@@ -60,17 +60,20 @@
     });
 	
     $f3->route('POST /newaccount', function($f3) {
-		$username = $_POST['username'];
+		$username = $_POST['email'];
 		$password = $_POST['password'];
 		$password2 = $_POST['password2'];
 		$key = $_POST['key'];
-
+		$barkDB = $GLOBALS['barkDB'];
+		$user = new User($username, $password);
 		if($password == $password2){
 			if(isset($_POST['admin'])){
 			//create admin account
+			$barkDB->addAdmin($user);
 		}
 		else{
 			//make normal account
+			$barkDB->addBasicUser($user);
 		}
 		}
 		
