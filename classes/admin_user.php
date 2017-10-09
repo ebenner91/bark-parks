@@ -26,7 +26,7 @@ class AdminUser extends User
      *Contructor to create the admin user and save the details
      *and permissions
      *
-     *@param array $permissions the user's admin permissions
+     *@param Array $permissions the user's admin permissions
      */
     function __construct($permissions)
     {
@@ -39,7 +39,7 @@ class AdminUser extends User
     /**
      *Setter for the permissions array
      *
-     *@param array $permissions the user's admin permissions
+     *@param Array $permissions the user's admin permissions
      */
     function setPermissions($permissions)
     {

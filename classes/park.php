@@ -29,6 +29,7 @@ class Park
      *
      *@param String $name the name of the park
      *@param String $location the location of the park
+     *@param String $features the list of features for the park
      *@param String $description the description text about the park
      */
     function __construct($name, $location, $features, $description)
