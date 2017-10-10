@@ -20,14 +20,14 @@
          <!-- Collect the nav links, forms, and other content for toggling -->
               <ul class="nav navbar-nav">
                 <li><a href="./">Home</a></li>
-                <check if="{{ @SESSION.loggedin == true }}">
-					<true>
+                <?php if ($SESSION['loggedin'] == true): ?>
+					
 						<li><a href="./logout">Logout</a></li>
-					</true>
-					<false>
+					
+					<?php else: ?>
 						<li><a href="./login">Login</a></li>
-					</false>
-				</check>
+					
+				<?php endif; ?>
                 <li><a href="./newaccount">Create an Account</a></li>
               </ul>
         </nav>
@@ -69,9 +69,9 @@
                          </div>
                        </div>
                      </form>
-					 <check if="{{ @parkSuccess }}">
-						<false><br><span class="text-danger">{{ @parkErrorText }}</span></false>
-					</check>
+					 <?php if ($parkSuccess): ?>
+						<?php else: ?><br><span class="text-danger"><?= $parkErrorText ?></span>
+					<?php endif; ?>
                 </div>        
            </div> 
         </div>

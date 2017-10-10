@@ -268,7 +268,7 @@ class BarkDB
         $this->addToHistory($id, $description);
         
         //Return ID of inserted row
-        return $id;
+        return true;
     }
     
     /**

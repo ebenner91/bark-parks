@@ -38,7 +38,11 @@
      
      
          <div class="container">
-            
+          <?php if ($SESSION['loggedin'] == true): ?>
+					
+						<a role="button" class="btn btn-primary" href="./newpark">Add a Park</a>
+					
+				<?php endif; ?>  
        <table id="parks-table" class="table table-responsive table-striped">
             <thead>
                 <tr>  
@@ -66,7 +70,7 @@
             </tbody>
             
         </table>     
-            
+     	       
      </div>
 		<script
 		src="https://code.jquery.com/jquery-3.2.1.min.js"

@@ -211,7 +211,16 @@
     });
 	
 	$f3->route('GET|POST /newpark', function($f3) {
-		
+		if(isset($_POST['park-submit'])) {
+			$newPark = new Park($_POST['park-name'], $_POST['location'], $_POST['features'], $_POST['description']);
+			
+			if($GLOBALS['barkDB']->addPark($newPark)) {
+				$f3->reroute('/');
+			} else {
+				$f3->set('parkSuccess', false);
+				$f3->set('parkErrorText', 'Unable to submit park, please try again.');
+			}
+		}
         echo Template::instance()->render('pages/newpark.html');
     });
         //Run fat free    
