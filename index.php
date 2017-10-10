@@ -148,6 +148,15 @@
 				$f3->set('commentErrorText', 'Unable to delete comment, please try again.');
 			}
 		}
+		if(isset($_POST['description-submit'])) {
+			if($GLOBALS['barkDB']->updateDescription($params['id'], $_POST['text'])) {
+				$f3->set('updateSuccess', true);
+				$f3->set('updateSuccessText', 'Description edited successfully!');
+			} else {
+				$f3->set('updateSuccess', false);
+				$f3->set('updateErrorText', 'Unable to edit description, please try again.');
+			}
+		}
 		$park =  $GLOBALS['barkDB']->getParkById($params['id']);
 		$comments = $GLOBALS['barkDB']->getComments($params['id']);
 		$images = $GLOBALS['barkDB']->getImages($params['id']);

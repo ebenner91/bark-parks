@@ -252,9 +252,13 @@ class BarkDB
         $statement->bindValue(':description', $park->getDescription(), PDO::PARAM_STR);
         
         $statement->execute();
+        $id = $this->_pdo->lastInsertId();
+        
+        //Add description to history
+        $this->addToHistory($id, $park->getDescription);
         
         //Return ID of inserted row
-        return $this->_pdo->lastInsertId();
+        return $id;
     }
     
     /**
@@ -444,6 +448,8 @@ class BarkDB
     */
    function updateDescription($id, $description)
    {
+        $this->addToHistory($id, $description);
+        
         //Create the update statement
         $update = 'UPDATE parks
         SET description = :description
@@ -452,6 +458,29 @@ class BarkDB
         $statement = $this->_pdo->prepare($update);
         $statement->bindValue(':id', $id, PDO::PARAM_INT);
         $statement->bindValue(':description', $description, PDO::PARAM_STR);
+        
+        $statement->execute();
+        
+        //description updated sucessfully, return true
+        return true;
+   }
+   
+   /**
+    *Adds a description to the description history
+    *
+    *@param int $id the id of the park
+    *@param String $description the description of the park
+    */
+   function addToHistory($id, $description)
+   {
+        //Create the insert statement
+        $insert = 'INSERT INTO description_history (park_id, text)
+        VALUES (:parkid, :text)';
+        
+        $statement = $this->_pdo->prepare($insert);
+
+        $statement->bindValue(':parkid', $id, PDO::PARAM_INT);
+        $statement->bindValue(':text', $description, PDO::PARAM_STR);
         
         $statement->execute();
    }
