@@ -20,8 +20,18 @@
          <!-- Collect the nav links, forms, and other content for toggling -->
               <ul class="nav navbar-nav">
                 <li><a href="../">Home</a></li>
-                <li><a href="../login">Login</a></li>
-                <li><a href="../newaccount">Create an Account</a></li>
+                <?php if ($SESSION['loggedin'] == true): ?>
+					
+						<li><a href="/328/bark-parks/logout">Logout</a></li>
+					
+					<?php else: ?>
+						<li><a href="/328/bark-parks/login">Login</a></li>
+					
+				<?php endif; ?>
+				<?php if ($SESSION['loggedin'] == true): ?>
+					
+					<?php else: ?><li><a href="./newaccount">Create an Account</a></li>
+				<?php endif; ?>
               </ul>
         </nav>
         
@@ -91,17 +101,44 @@
 			<div class="row"><!-- Empty row to fix formatting problem --></div>
             <div class="row about-park">
                 <div class="col-sm-6">
-                    <h3>Description:</h3><br/>
+                    <h3>Description:</h3> <?php if ($SESSION['loggedin'] == true): ?>
+					<?php if ($updateSuccess): ?>
+						<br><span class="text-success"><?= $updateSuccessText ?></span>
+						<?php else: ?><br><span class="text-danger"><?= $updateErrorText ?></span>
+					<?php endif; ?> <br/>
+						
+							<button class="btn" data-toggle="modal" data-target="#description-modal">Edit Description</button>
+						
+					<?php endif; ?><br/>
                     <?= $park['description'].PHP_EOL ?>
                 </div>
                 <div class="col-sm-6">
-                    <h3>Comments:</h3><button class="btn" data-toggle="modal" data-target="#comment-modal">Add Comment</button><br/>
+                    <h3>Comments:</h3>
+					<?php if ($SESSION['loggedin'] == true): ?>
+						
+							<button class="btn" data-toggle="modal" data-target="#comment-modal">Add Comment</button><br/>
+						
+					<?php endif; ?>
+					<?php if ($commentSuccess): ?>
+						<br><span class="text-success"><?= $commentSuccessText ?></span>
+						<?php else: ?><br><span class="text-danger"><?= $commentErrorText ?></span>
+					<?php endif; ?>
 					<div class="comment-block responsive">
 						<?php foreach (($comments?:[]) as $comment): ?>
-							<blockquote class="comment">
-								<p><?= $comment['text'] ?></p>
-								<footer><?= $comment['username'] ?> <span class="pull-right">Posted: <?= $comment['date_posted'] ?></span></footer>
-							</blockquote>
+							<?php if ($comment['active'] == 1): ?>
+								
+									<blockquote class="comment">
+										<p><?= $comment['text'] ?></p>
+										<footer><?= $comment['username'] ?> <span class="pull-right">Posted: <?= $comment['date_posted'].PHP_EOL ?>
+										<?php if (($comment['username'] === $SESSION['username'])): ?>
+											<form method="post" action="/328/bark-parks/viewpark/<?= $park['id'] ?>" enctype="multipart/form-data" name="info">
+												<input type="hidden" name="comment-id" value="<?= $comment['id'] ?>">
+												<button type="submit" name="delete-comment" class="btn btn-default center-block btn-gray" value="create">Delete</button>
+											</form>
+										<?php endif; ?></span></footer>
+									</blockquote>
+								
+							<?php endif; ?>
 						<?php endforeach; ?>
 					</div>
                 </div>
@@ -226,7 +263,34 @@
 		</div>
 	</div>
 	<!-- /modal -->	
-            
+         
+	<!-- Edit Description Modal -->
+	<div id="description-modal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Edit Description</h4>
+		  </div>
+		  <div class="modal-body">
+			<p>
+				<form method="post" action="/328/bark-parks/viewpark/<?= $park['id'] ?>" enctype="multipart/form-data" name="info">
+						<div class="form-group">
+							<div class="input-group-addon textarea-addon"> Enter Description </div>
+							<textarea name="text" class="form-control" rows="3" required></textarea>
+                        </div>
+					<button type="submit" name="description-submit" class="btn btn-default center-block btn-gray" value="create">Submit</button>
+				</form>
+			</p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  </div>
+		</div>
+		</div>
+	</div>
+	<!-- /modal -->		    
 	</div>
 	<!--/.container-fluid -->
 		<script

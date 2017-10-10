@@ -28,7 +28,10 @@
 						<li class="active"><a href="./login">Login <span class="sr-only">(current)</span></a></li>
 					</false>
 				</check>
-                <li><a href="./newaccount">Create an Account</a></li>
+				<check if="{{ @SESSION.loggedin == true }}">
+					<false><li><a href="./newaccount">Create an Account</a></li></false>
+					<true></true>
+				</check>
               </ul>
         </nav>
         

@@ -20,8 +20,18 @@
          <!-- Collect the nav links, forms, and other content for toggling -->
               <ul class="nav navbar-nav">
                 <li><a href="./">Home</a></li>
-                <li><a href="./login">Login</a></li>
-                <li class="active"><a href="./newaccount">Create an Account<span class="sr-only">(current)</span></a></li>
+                <?php if ($SESSION['loggedin'] == true): ?>
+					
+						<li><a href="./logout">Logout</a></li>
+					
+					<?php else: ?>
+						<li><a href="./login">Login</a></li>
+					
+				<?php endif; ?>
+				<?php if ($SESSION['loggedin'] == true): ?>
+					
+					<?php else: ?><li><a href="./newaccount">Create an Account</a></li>
+				<?php endif; ?>
               </ul>
         </nav>
         
