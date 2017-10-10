@@ -103,7 +103,12 @@
                     <?= $park['description'].PHP_EOL ?>
                 </div>
                 <div class="col-sm-6">
-                    <h3>Comments:</h3><button class="btn" data-toggle="modal" data-target="#comment-modal">Add Comment</button><br/>
+                    <h3>Comments:</h3>
+					<?php if ($SESSION['loggedin'] == true): ?>
+						
+							<button class="btn" data-toggle="modal" data-target="#comment-modal">Add Comment</button><br/>
+						
+					<?php endif; ?>
 					<?php if ($commentSuccess): ?>
 						<br><span class="text-success"><?= $commentSuccessText ?></span>
 						<?php else: ?><br><span class="text-danger"><?= $commentErrorText ?></span>

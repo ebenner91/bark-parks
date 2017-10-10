@@ -103,7 +103,12 @@
                     {{ @park['description'] }}
                 </div>
                 <div class="col-sm-6">
-                    <h3>Comments:</h3><button class="btn" data-toggle="modal" data-target="#comment-modal">Add Comment</button><br/>
+                    <h3>Comments:</h3>
+					<check if="{{ @SESSION.loggedin == true }}">
+						<true>
+							<button class="btn" data-toggle="modal" data-target="#comment-modal">Add Comment</button><br/>
+						</true>
+					</check>
 					<check if="{{ @commentSuccess }}">
 						<true><br><span class="text-success">{{ @commentSuccessText }}</span></true>
 						<false><br><span class="text-danger">{{ @commentErrorText }}</span></false>

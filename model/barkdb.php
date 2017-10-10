@@ -20,6 +20,7 @@ class BarkDB
 {
     private $_pdo;
     
+    
     /**
      *Constructor to open the connection to the database
     */
@@ -27,6 +28,7 @@ class BarkDB
     {
         //Require configuration file
         require_once '/home/ebenner/config.php';
+
         
         try {
             //Establish database connection
@@ -240,6 +242,14 @@ class BarkDB
      */
     function addPark($park)
     {
+        include_once '/home/ebenner/filter-words.php';
+
+        $description = $park->getDescription();
+        
+        foreach ($filters as $filter) {
+           $description = str_ireplace($filter, "****", $description);
+        }
+        
         //Create the insert statement
         $insert = 'INSERT INTO parks (park_name, location, features, description)
         VALUES (:park_name, :location, :features, :description)';
@@ -249,13 +259,13 @@ class BarkDB
         $statement->bindValue(':park_name', $park->getName(), PDO::PARAM_STR);
         $statement->bindValue(':location', $park->getLocation(), PDO::PARAM_STR);
         $statement->bindValue(':features', $park->getFeatures(), PDO::PARAM_STR);
-        $statement->bindValue(':description', $park->getDescription(), PDO::PARAM_STR);
+        $statement->bindValue(':description', $description, PDO::PARAM_STR);
         
         $statement->execute();
         $id = $this->_pdo->lastInsertId();
         
         //Add description to history
-        $this->addToHistory($id, $park->getDescription);
+        $this->addToHistory($id, $description);
         
         //Return ID of inserted row
         return $id;
@@ -448,6 +458,14 @@ class BarkDB
     */
    function updateDescription($id, $description)
    {
+    
+        include_once '/home/ebenner/filter-words.php';
+
+    
+        foreach ($filters as $filter) {
+           $description = str_ireplace($filter, "****", $description);
+        }
+    
         $this->addToHistory($id, $description);
         
         //Create the update statement
@@ -556,6 +574,11 @@ class BarkDB
     */
    function addComment($comment, $username, $parkId)
    {
+        include_once '/home/ebenner/filter-words.php';
+        
+        foreach ($filters as $filter) {
+           $comment = str_ireplace($filter, "****", $comment);
+        }
         //Create the insert statement
         $insert = 'INSERT INTO comments (park_id, text, username, date_posted)
         VALUES (:parkid, :text, :username, NOW())';
