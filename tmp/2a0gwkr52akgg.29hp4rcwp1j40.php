@@ -22,10 +22,10 @@
                 <li><a href="../">Home</a></li>
                 <?php if ($SESSION['loggedin'] == true): ?>
 					
-						<li><a href="./logout">Logout</a></li>
+						<li><a href="/328/bark-parks/logout">Logout</a></li>
 					
 					<?php else: ?>
-						<li><a href="./login">Login</a></li>
+						<li><a href="/328/bark-parks/login">Login</a></li>
 					
 				<?php endif; ?>
                 <li><a href="../newaccount">Create an Account</a></li>
