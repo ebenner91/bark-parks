@@ -20,7 +20,14 @@
          <!-- Collect the nav links, forms, and other content for toggling -->
               <ul class="nav navbar-nav">
                 <li><a href="./">Home</a></li>
-                <li class="active"><a href="./login">Login <span class="sr-only">(current)</span></a></li>
+				<?php if ($SESSION['loggedin'] == true): ?>
+					
+						<li class="active"><a href="./logout">Logout <span class="sr-only">(current)</span></a></li>
+					
+					<?php else: ?>
+						<li class="active"><a href="./login">Login <span class="sr-only">(current)</span></a></li>
+					
+				<?php endif; ?>
                 <li><a href="./newaccount">Create an Account</a></li>
               </ul>
         </nav>
@@ -47,10 +54,10 @@
                        </div>
                        <div class="form-group"> 
                          <div class="col-sm-offset-2 col-sm-10">
-                            <div class="checkbox btn-center">
-                             <label><input type="checkbox"><p class="text-small">Remember me</p></label>
-                           </div>
                            <button type="submit" class="btn btn-default btn-center">Sign in</button>
+							<?php if ($loginSuccess): ?>
+								<?php else: ?><div>Login failed, check email & password.</div>
+							<?php endif; ?>
                          </div>
                        </div>
                      </form>

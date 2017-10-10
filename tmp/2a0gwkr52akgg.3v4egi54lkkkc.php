@@ -20,7 +20,14 @@
          <!-- Collect the nav links, forms, and other content for toggling -->
               <ul class="nav navbar-nav">
                 <li><a href="./">Home</a></li>
-                <li><a href="./login">Login</a></li>
+                <?php if ($SESSION['loggedin'] == true): ?>
+					
+						<li><a href="./logout">Logout</a></li>
+					
+					<?php else: ?>
+						<li><a href="./login">Login</a></li>
+					
+				<?php endif; ?>
                 <li class="active"><a href="./newaccount">Create an Account<span class="sr-only">(current)</span></a></li>
               </ul>
         </nav>
@@ -44,16 +51,23 @@
                          </div>
                        </div>
                        <div class="form-group">
-                         <label class="control-label col-sm-2" for="password-verify">Verify:</label>
+                         <label class="control-label col-sm-2" for="password2">Verify:</label>
                          <div class="col-sm-10"> 
-                           <input type="password" class="form-control" id="password-verify" placeholder="Repeat password" name="password2">
+                           <input type="password" class="form-control" id="password2" placeholder="Repeat password" name="password2">
                          </div>
-						 <span id="verify-status"></span>
                        </div>
 					   <br/>
                          <div class="col-sm-offset-2 col-sm-10">
                            <button type="submit" class="btn btn-default btn-center">Submit</button>
                          </div>
+						 <?php if ($emailSuccess): ?>
+									
+									<?php else: ?>An account with this email address already exists, use another.
+						 <?php endif; ?>
+					 <?php if ($passwordSuccess): ?>
+							
+									<?php else: ?>Passwords did not match. Try again
+					 <?php endif; ?>
                      </form>
                 </div>
             
@@ -62,13 +76,6 @@
      
    
             
-     </div>
-	<!-- jQuery minified CDN -->
-	<script
-	src="https://code.jquery.com/jquery-3.2.1.min.js"
-	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-	crossorigin="anonymous"></script>
-	<script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-	<script src="/328/bark-parks/scripts/script.js"></script>
+     </div>   
     </body>
 </html>

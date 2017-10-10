@@ -20,7 +20,14 @@
          <!-- Collect the nav links, forms, and other content for toggling -->
               <ul class="nav navbar-nav">
                 <li><a href="./">Home</a></li>
-                <li><a href="./login">Login</a></li>
+                <check if="{{ @SESSION.loggedin == true }}">
+					<true>
+						<li><a href="./logout">Logout</a></li>
+					</true>
+					<false>
+						<li><a href="./login">Login</a></li>
+					</false>
+				</check>
                 <li class="active"><a href="./newaccount">Create an Account<span class="sr-only">(current)</span></a></li>
               </ul>
         </nav>
