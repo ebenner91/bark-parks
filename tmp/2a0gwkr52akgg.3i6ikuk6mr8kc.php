@@ -28,7 +28,10 @@
 						<li class="active"><a href="./login">Login <span class="sr-only">(current)</span></a></li>
 					
 				<?php endif; ?>
-                <li><a href="./newaccount">Create an Account</a></li>
+				<?php if ($SESSION['loggedin'] == true): ?>
+					
+					<?php else: ?><li><a href="./newaccount">Create an Account</a></li>
+				<?php endif; ?>
               </ul>
         </nav>
         

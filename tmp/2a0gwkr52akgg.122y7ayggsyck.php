@@ -31,7 +31,10 @@
 						<li><a href="./login">Login</a></li>
 					
 				<?php endif; ?>
-                <li><a href="./newaccount">Create an Account</a></li>
+				<?php if ($SESSION['loggedin'] == true): ?>
+					
+					<?php else: ?><li><a href="./newaccount">Create an Account</a></li>
+				<?php endif; ?>
               </ul>
 
         </nav>
