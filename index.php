@@ -66,15 +66,26 @@
 		$key = $_POST['key'];
 		$barkDB = $GLOBALS['barkDB'];
 		$user = new User($username, $password);
-		if($password == $password2){
-			if(isset($_POST['admin'])){
-			//create admin account
-			$barkDB->addAdmin($user);
+		$duplicateUserName = $barkDB->checkDuplicateUser($username);
+		var_dump($duplicateUserName);
+		if($duplicateUserName == false){
+			if($password == $password2){
+				if(isset($_POST['admin'])){
+				//create admin account
+				$barkDB->addAdmin($user);
+			$f3->set("SESSION.loggedin",  true);
+			header('Location: ./');
+			}
+			else{
+				//make normal account
+				$barkDB->addBasicUser($user);
+				$f3->set("SESSION.loggedin",  true);
+				header('Location: ./');			
+			}
+			}
 		}
 		else{
-			//make normal account
-			$barkDB->addBasicUser($user);
-		}
+			echo "Username already exists!";
 		}
 		
         $view = new View;
