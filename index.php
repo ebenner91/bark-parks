@@ -67,7 +67,6 @@
 		$barkDB = $GLOBALS['barkDB'];
 		$user = new User($username, $password);
 		$duplicateUserName = $barkDB->checkDuplicateUser($username);
-		var_dump($duplicateUserName);
 		if($duplicateUserName == false){
 			if($password == $password2){
 				if(isset($_POST['admin'])){
