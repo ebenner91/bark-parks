@@ -44,9 +44,12 @@
     $f3->route('POST /login', function($f3) {
 		$username = $_POST['email'];
 		$password = $_POST['password'];
+		
 		$barkDB = $GLOBALS['barkDB'];
 		if($barkDB->login($username, $password)){
 			$f3->set("SESSION.loggedin",  true);
+			$_SESSION['username'] = $username;
+			$f3->set("SESSION.username",  $username);
 			header('Location: ./');
 		}
         $view = new View;
@@ -118,12 +121,21 @@
 			}
 		}
 		if(isset($_POST['comment-submit'])) {
-			if($GLOBALS['barkDB']->addComment($_SESSION['username'], $_POST['comment'],$params['id'])) {
+			if($GLOBALS['barkDB']->addComment($_POST['comment'], $_SESSION['username'], $params['id'])) {
 				$f3->set('commentSuccess', true);
 				$f3->set('commentSuccessText', 'Comment submitted successfully!');
 			} else {
 				$f3->set('commentSuccess', false);
 				$f3->set('commentErrorText', 'Unable to submit comment, please try again.');
+			}
+		}
+		if(isset($_POST['delete-comment'])) {
+			if($GLOBALS['barkDB']->deleteComment($_POST['comment-id'])) {
+				$f3->set('commentSuccess', true);
+				$f3->set('commentSuccessText', 'Comment deleted successfully!');
+			} else {
+				$f3->set('commentSuccess', false);
+				$f3->set('commentErrorText', 'Unable to delete comment, please try again.');
 			}
 		}
 		$park =  $GLOBALS['barkDB']->getParkById($params['id']);

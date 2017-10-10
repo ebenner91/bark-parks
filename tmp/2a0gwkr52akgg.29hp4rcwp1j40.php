@@ -96,12 +96,26 @@
                 </div>
                 <div class="col-sm-6">
                     <h3>Comments:</h3><button class="btn" data-toggle="modal" data-target="#comment-modal">Add Comment</button><br/>
+					<?php if ($commentSuccess): ?>
+						<br><span class="text-success"><?= $commentSuccessText ?></span>
+						<?php else: ?><br><span class="text-danger"><?= $commentErrorText ?></span>
+					<?php endif; ?>
 					<div class="comment-block responsive">
 						<?php foreach (($comments?:[]) as $comment): ?>
-							<blockquote class="comment">
-								<p><?= $comment['text'] ?></p>
-								<footer><?= $comment['username'] ?> <span class="pull-right">Posted: <?= $comment['date_posted'] ?></span></footer>
-							</blockquote>
+							<?php if ($comment['active'] == 1): ?>
+								
+									<blockquote class="comment">
+										<p><?= $comment['text'] ?></p>
+										<footer><?= $comment['username'] ?> <span class="pull-right">Posted: <?= $comment['date_posted'].PHP_EOL ?>
+										<?php if (($comment['username'] === $SESSION['username'])): ?>
+											<form method="post" action="/328/bark-parks/viewpark/<?= $park['id'] ?>" enctype="multipart/form-data" name="info">
+												<input type="hidden" name="comment-id" value="<?= $comment['id'] ?>">
+												<button type="submit" name="delete-comment" class="btn btn-default center-block btn-gray" value="create">Delete</button>
+											</form>
+										<?php endif; ?></span></footer>
+									</blockquote>
+								
+							<?php endif; ?>
 						<?php endforeach; ?>
 					</div>
                 </div>
