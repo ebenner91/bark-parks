@@ -565,6 +565,33 @@ class BarkDB
         return true;
    }
    
+   /**
+    *Checks to see if the current username is already taken
+    *@param String Username to check if it already exists.
+    */
+   function checkDuplicateUser($userName)
+   {
+        $select = "SELECT * FROM users WHERE username=:username";
+        
+        $statement = $this->_pdo->prepare($select);
+        $statement->bindValue(':username', $userName, PDO::PARAM_INT);        
+        $statement->execute();
+        
+        $results = $statement->fetch(PDO::FETCH_ASSOC);
+        if($results){
+        return true;
+        
+        }
+
+        else{
+        return false;
+        }
+
+
+
+    }
+    
+   
 }
    
    
