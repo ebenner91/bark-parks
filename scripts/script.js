@@ -102,3 +102,28 @@ $(document).ready( function() {
 
     });
 });
+
+//Password verification script adapted from: http://jsfiddle.net/dbwMY/
+$(document).ready(function() {
+  $("#password-verify").keyup(validate);
+});
+
+
+function validate() {
+  var password = $("#password").val();
+  var verify = $("#password-verify").val();
+
+    
+ 
+    if(password == verify) {
+        $("#verify-status").removeClass("text-danger");
+        $("#verify-status").addClass("text-success");
+        $("#verify-status").text("Passwords match");        
+    }
+    else {
+        $("#verify-status").removeClass("text-success");
+        $("#verify-status").addClass("text-danger");
+        $("#verify-status").text("Passwords do not match!");  
+    }
+    
+}

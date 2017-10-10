@@ -34,41 +34,26 @@
                        <div class="form-group">
                          <label class="control-label col-sm-2" for="email">Email:</label>
                          <div class="col-sm-10">
-                           <input type="email" class="form-control" id="email" placeholder="Enter email">
+                           <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
                          </div>
                        </div>
                        <div class="form-group">
                          <label class="control-label col-sm-2" for="password">Password:</label>
                          <div class="col-sm-10"> 
-                           <input type="password" class="form-control" id="password" placeholder="Enter password">
+                           <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
                          </div>
                        </div>
                        <div class="form-group">
-                         <label class="control-label col-sm-2" for="password2">Verify:</label>
+                         <label class="control-label col-sm-2" for="password-verify">Verify:</label>
                          <div class="col-sm-10"> 
-                           <input type="password" class="form-control" id="password2" placeholder="Repeat password">
+                           <input type="password" class="form-control" id="password-verify" placeholder="Repeat password" name="password2">
                          </div>
-                       </div>                       
-                       <div class="form-group">
-						<label class="control-label col-sm-2" for="password">Key:</label>
-						<div class="col-sm-10"> 
-						<input type="password" name="key" class="form-control" placeholder="For admin use only">
-						</div>
+						 <span id="verify-status"></span>
                        </div>
-                       <div class="form-group">
-						Permissions<br/>
-						<label class="form-check-label">
-						<input type="checkbox" name="admin[parks]" value="Parks">Delete Parks
-						</label><br/><label class="form-check-label">
-						<input type="checkbox" name="admin[photos]" value="Photos">Delete Photos
-						</label>
-						<br/><label class="form-check-label">
-						<input type="checkbox" name="admin[comments]" value="Comments">Delete Comments
-						</label><br/>
+					   <br/>
                          <div class="col-sm-offset-2 col-sm-10">
                            <button type="submit" class="btn btn-default btn-center">Submit</button>
                          </div>
-                       </div>
                      </form>
                 </div>
             
@@ -77,6 +62,13 @@
      
    
             
-     </div>   
+     </div>
+	<!-- jQuery minified CDN -->
+	<script
+	src="https://code.jquery.com/jquery-3.2.1.min.js"
+	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	crossorigin="anonymous"></script>
+	<script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+	<script src="/328/bark-parks/scripts/script.js"></script>
     </body>
 </html>
