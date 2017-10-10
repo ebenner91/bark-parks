@@ -464,7 +464,7 @@ class BarkDB
     */
    function getComments($id)
    {
-        $select = 'SELECT id, park_id, text, username, date_posted
+        $select = 'SELECT id, park_id, text, username, date_posted, active
                     FROM comments WHERE park_id = :park_id ORDER BY date_posted';
                     
         $statement = $this->_pdo->prepare($select);
@@ -527,7 +527,42 @@ class BarkDB
     */
    function addComment($comment, $username, $parkId)
    {
+        //Create the insert statement
+        $insert = 'INSERT INTO comments (park_id, text, username, date_posted)
+        VALUES (:parkid, :text, :username, NOW())';
         
+        $statement = $this->_pdo->prepare($insert);
+
+        $statement->bindValue(':parkid', $parkId, PDO::PARAM_INT);
+        $statement->bindValue(':text', $comment, PDO::PARAM_STR);
+        $statement->bindValue(':username', $username, PDO::PARAM_STR);
+        
+        $statement->execute();
+        
+        //Comment added successfully, return true
+        return true;
+   }
+   
+   /**
+    *Deletes a comment by marking it as inactive in the database (For the sake of security and
+    *audit purposes, this does not erase record of comment)
+    *
+    *@param int $commentId the id of the comment to be deleted.
+    */
+   function deleteComment($commentId)
+   {
+        //Create the update statement
+        $update = 'UPDATE comments
+        SET active = 0
+        WHERE id = :id';
+        
+        $statement = $this->_pdo->prepare($update);
+        $statement->bindValue(':id', $commentId, PDO::PARAM_INT);
+        
+        $statement->execute();
+        
+        //Comment deleted successfully, return true
+        return true;
    }
    
    /**
