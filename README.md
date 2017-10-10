@@ -1,6 +1,8 @@
 # bark-parks
 Team final project Dog Park Finder
 
+Created by Lizzie Benner and Jeff Church
+
 This website allows users to share information about local dog parks. Anyone can view listings about parks, and registered users
 can also add new information about parks or edit current information.
 
