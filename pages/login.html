@@ -47,10 +47,10 @@
                        </div>
                        <div class="form-group"> 
                          <div class="col-sm-offset-2 col-sm-10">
-                            <div class="checkbox btn-center">
-                             <label><input type="checkbox"><p class="text-small">Remember me</p></label>
-                           </div>
                            <button type="submit" class="btn btn-default btn-center">Sign in</button>
+							<check if="{{ @loginSuccess }}">
+								<false><div>Login failed, check email & password.</div></false>
+							</check>
                          </div>
                        </div>
                      </form>

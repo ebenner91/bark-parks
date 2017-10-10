@@ -53,6 +53,14 @@
                          <div class="col-sm-offset-2 col-sm-10">
                            <button type="submit" class="btn btn-default btn-center">Submit</button>
                          </div>
+						 <?php if ($emailSuccess): ?>
+									
+									<?php else: ?>An account with this email address already exists, use another.
+						 <?php endif; ?>
+					 <?php if ($passwordSuccess): ?>
+							
+									<?php else: ?>Passwords did not match. Try again
+					 <?php endif; ?>
                      </form>
                 </div>
             

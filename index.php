@@ -47,10 +47,16 @@
 		$f3->reroute('/');
     });
 	
+    $f3->route('GET /login', function($f3) {
+		$f3->set('loginSuccess', true);
+        $view = new View;
+        echo Template::instance()->render('pages/login.html');
+    });
+	
     $f3->route('POST /login', function($f3) {
 		$username = $_POST['email'];
 		$password = $_POST['password'];
-		
+		$f3->set('loginSuccess', true);
 		$barkDB = $GLOBALS['barkDB'];
 		if($barkDB->login($username, $password)){
 			$f3->set("SESSION.loggedin",  true);
@@ -58,12 +64,17 @@
 			$f3->set("SESSION.username",  $username);
 			header('Location: ./');
 		}
+		else{
+			$f3->set('loginSuccess', false);
+		}
         $view = new View;
         echo Template::instance()->render('pages/login.html');
-    });        
+    });       
     
     
     $f3->route('GET /newaccount', function($f3) {
+		$f3->set("emailSuccess", true);
+		$f3->set("passwordSuccess", true);
         $view = new View;
         echo Template::instance()->render('pages/newaccount.html');
     });
@@ -75,8 +86,12 @@
 		$key = $_POST['key'];
 		$barkDB = $GLOBALS['barkDB'];
 		$user = new User($username, $password);
-		$duplicateUserName = $barkDB->checkDuplicateUser($username);
+		$duplicateUserName = $barkDB->checkDuplicateUser($username);	
+		
+		$f3->set("emailSuccess", true);
+		$f3->set("passwordSuccess", true);
 		if($duplicateUserName == false){
+			
 			if($password == $password2){
 				if(isset($_POST['admin'])){
 				//create admin account
@@ -91,11 +106,18 @@
 				header('Location: ./');			
 			}
 			}
+			
+			else{
+				//passwords dont match
+				$f3->set("passwordSuccess", false);
+			}
+			
 		}
 		else{
-			echo "Username already exists!";
+			//duplicate accounts
+			$f3->set("emailSuccess", false);
 		}
-		
+
         $view = new View;
         echo Template::instance()->render('pages/newaccount.html');
     });
