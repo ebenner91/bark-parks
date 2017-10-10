@@ -41,6 +41,12 @@
         echo Template::instance()->render('pages/login.html');
     });
 	
+	$f3->route('GET /logout', function($f3) {
+		$f3->clear('SESSION');
+		
+		$f3->reroute('/');
+    });
+	
     $f3->route('POST /login', function($f3) {
 		$username = $_POST['email'];
 		$password = $_POST['password'];

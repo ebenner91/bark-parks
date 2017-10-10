@@ -23,7 +23,14 @@
 
               <ul class="nav navbar-nav">
                 <li class="active"><a href="./">Home <span class="sr-only">(current)</span></a></li>
-                <li><a href="./login">Login</a></li>
+				<?php if ($SESSION['loggedin'] == true): ?>
+					
+						<li><a href="./logout">Logout</a></li>
+					
+					<?php else: ?>
+						<li><a href="./login">Login</a></li>
+					
+				<?php endif; ?>
                 <li><a href="./newaccount">Create an Account</a></li>
               </ul>
 
@@ -38,11 +45,6 @@
                     <th>Park</th>
                     <th>Location</th>
                     <th>Rating</th>
-                    <?php if ($SESSION['loggedin'] == true): ?>
-						
-							<th>Edit</th>
-						
-					<?php endif; ?>
                 </tr>
             </thead>
             <tbody>
@@ -58,11 +60,6 @@
 						<div class="star_4 ratings_stars"></div>
 						<div class="star_5 ratings_stars"></div>
 						</div></td>
-						<?php if ($SESSION['loggedin'] == true): ?>
-							
-								<td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
-							
-						<?php endif; ?>
 					</tr><!-- end of loop-->
 				<?php endforeach; ?>
                 
